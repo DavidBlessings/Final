@@ -55,9 +55,16 @@
                     </div>
                 </div>
                 <div class="hidden md:block">
+                    <div class="text-center">
+                        <div id="current-time" class="text-lg font-semibold text-blue-800"></div>
+                        <div class="text-xs text-gray-600">Ghana Time (GMT)</div>
+                    </div>
+                </div>
+                <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-8">
                         <a href="#home" class="nav-link text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium">Home</a>
                         <button onclick="openServicesModal()" class="nav-link text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium">Services</button>
+                        <a href="#training" class="nav-link text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium">Training</a>
                         <button onclick="openAboutModal()" class="nav-link text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium">About Us</button>
                         <button onclick="openContactModal()" class="nav-link text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium">Contact</button>
                     </div>
@@ -76,6 +83,7 @@
             <div class="px-2 pt-2 pb-3 space-y-1">
                 <a href="#home" class="block px-3 py-2 text-gray-700 hover:text-blue-600">Home</a>
                 <button onclick="openServicesModal()" class="block px-3 py-2 text-gray-700 hover:text-blue-600 w-full text-left">Services</button>
+                <a href="#training" class="block px-3 py-2 text-gray-700 hover:text-blue-600">Training</a>
                 <button onclick="openAboutModal()" class="block px-3 py-2 text-gray-700 hover:text-blue-600 w-full text-left">About Us</button>
                 <button onclick="openContactModal()" class="block px-3 py-2 text-gray-700 hover:text-blue-600 w-full text-left">Contact</button>
             </div>
@@ -458,6 +466,311 @@
                             <div class="text-3xl font-bold text-blue-600 mb-2">99.9%</div>
                             <div class="text-gray-600">Uptime</div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Security Training Videos Section -->
+    <section id="training" class="py-20 bg-gradient-to-br from-blue-50 to-indigo-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">🎯 Elite Security Officer Training</h2>
+                <p class="text-xl text-gray-600">Professional training videos designed by security experts for security professionals</p>
+                <div class="mt-4 inline-flex items-center bg-red-100 text-red-800 px-4 py-2 rounded-full text-sm font-semibold">
+                    🔥 TRENDING: Real-world scenarios • Combat-tested techniques • Officer-approved content
+                </div>
+            </div>
+
+            <!-- Training Categories -->
+            <div class="mb-12">
+                <div class="flex flex-wrap justify-center gap-4 mb-8">
+                    <button onclick="filterVideos('all')" class="video-filter-btn active bg-blue-600 text-white px-6 py-2 rounded-full font-semibold transition-all duration-300 hover:bg-blue-700">All Training</button>
+                    <button onclick="filterVideos('tactical')" class="video-filter-btn bg-white text-blue-600 border-2 border-blue-600 px-6 py-2 rounded-full font-semibold transition-all duration-300 hover:bg-blue-600 hover:text-white">Tactical Operations</button>
+                    <button onclick="filterVideos('corporate')" class="video-filter-btn bg-white text-blue-600 border-2 border-blue-600 px-6 py-2 rounded-full font-semibold transition-all duration-300 hover:bg-blue-600 hover:text-white">Corporate Security</button>
+                    <button onclick="filterVideos('surveillance')" class="video-filter-btn bg-white text-blue-600 border-2 border-blue-600 px-6 py-2 rounded-full font-semibold transition-all duration-300 hover:bg-blue-600 hover:text-white">Surveillance</button>
+                    <button onclick="filterVideos('emergency')" class="video-filter-btn bg-white text-blue-600 border-2 border-blue-600 px-6 py-2 rounded-full font-semibold transition-all duration-300 hover:bg-blue-600 hover:text-white">Emergency Response</button>
+                </div>
+            </div>
+
+            <!-- Video Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="video-grid">
+                
+                <!-- Tactical Operations Videos -->
+                <div class="video-card bg-white rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition-all duration-300" data-category="tactical">
+                    <div class="relative">
+                        <div class="bg-gradient-to-br from-red-600 to-red-800 h-48 flex items-center justify-center">
+                            <div class="text-center text-white">
+                                <div class="text-6xl mb-4">🎯</div>
+                                <div class="text-lg font-semibold">Advanced Threat Assessment</div>
+                            </div>
+                        </div>
+                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
+                            <button onclick="openVideoModal('threat-assessment')" class="bg-white text-red-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-300">
+                                ▶ Watch Training
+                            </button>
+                        </div>
+                        <div class="absolute top-4 right-4 bg-red-600 text-white px-3 py-1 rounded-full text-sm font-semibold">12:45</div>
+                        <div class="absolute top-4 left-4 bg-yellow-500 text-black px-2 py-1 rounded text-xs font-bold">CERTIFIED</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Advanced Threat Assessment for Officers</h3>
+                        <p class="text-gray-600 mb-4">Master professional threat detection techniques used by elite security forces. Real scenarios, proven methods.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-red-600 font-medium">🎯 Tactical Operations</span>
+                            <div class="flex items-center text-gray-500 text-sm">
+                                <span class="mr-2">👁️</span>
+                                <span>8.2k officers trained</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="video-card bg-white rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition-all duration-300" data-category="tactical">
+                    <div class="relative">
+                        <div class="bg-gradient-to-br from-orange-600 to-red-700 h-48 flex items-center justify-center">
+                            <div class="text-center text-white">
+                                <div class="text-6xl mb-4">🥊</div>
+                                <div class="text-lg font-semibold">Combat Techniques</div>
+                            </div>
+                        </div>
+                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
+                            <button onclick="openVideoModal('combat-techniques')" class="bg-white text-orange-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-300">
+                                ▶ Watch Training
+                            </button>
+                        </div>
+                        <div class="absolute top-4 right-4 bg-orange-600 text-white px-3 py-1 rounded-full text-sm font-semibold">18:30</div>
+                        <div class="absolute top-4 left-4 bg-red-500 text-white px-2 py-1 rounded text-xs font-bold">ADVANCED</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Professional Combat & Restraint Techniques</h3>
+                        <p class="text-gray-600 mb-4">Military-grade defensive tactics and restraint methods. Used by elite protection units worldwide.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-orange-600 font-medium">🥊 Tactical Operations</span>
+                            <div class="flex items-center text-gray-500 text-sm">
+                                <span class="mr-2">👁️</span>
+                                <span>12.5k officers trained</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Corporate Security Videos -->
+                <div class="video-card bg-white rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition-all duration-300" data-category="corporate">
+                    <div class="relative">
+                        <div class="bg-gradient-to-br from-blue-600 to-indigo-700 h-48 flex items-center justify-center">
+                            <div class="text-center text-white">
+                                <div class="text-6xl mb-4">🏢</div>
+                                <div class="text-lg font-semibold">Executive Protection</div>
+                            </div>
+                        </div>
+                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
+                            <button onclick="openVideoModal('executive-protection')" class="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-300">
+                                ▶ Watch Training
+                            </button>
+                        </div>
+                        <div class="absolute top-4 right-4 bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-semibold">22:15</div>
+                        <div class="absolute top-4 left-4 bg-purple-500 text-white px-2 py-1 rounded text-xs font-bold">ELITE</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Executive Protection Protocols</h3>
+                        <p class="text-gray-600 mb-4">VIP protection strategies used by presidential security details. Advanced route planning and threat mitigation.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-blue-600 font-medium">🏢 Corporate Security</span>
+                            <div class="flex items-center text-gray-500 text-sm">
+                                <span class="mr-2">👁️</span>
+                                <span>6.8k officers trained</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="video-card bg-white rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition-all duration-300" data-category="corporate">
+                    <div class="relative">
+                        <div class="bg-gradient-to-br from-purple-600 to-pink-700 h-48 flex items-center justify-center">
+                            <div class="text-center text-white">
+                                <div class="text-6xl mb-4">🛡️</div>
+                                <div class="text-lg font-semibold">Crowd Control</div>
+                            </div>
+                        </div>
+                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
+                            <button onclick="openVideoModal('crowd-control')" class="bg-white text-purple-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-300">
+                                ▶ Watch Training
+                            </button>
+                        </div>
+                        <div class="absolute top-4 right-4 bg-purple-600 text-white px-3 py-1 rounded-full text-sm font-semibold">16:45</div>
+                        <div class="absolute top-4 left-4 bg-green-500 text-white px-2 py-1 rounded text-xs font-bold">FIELD-TESTED</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Advanced Crowd Control & Event Security</h3>
+                        <p class="text-gray-600 mb-4">Riot control psychology and mass event security. Techniques from major sporting events and concerts.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-purple-600 font-medium">🛡️ Corporate Security</span>
+                            <div class="flex items-center text-gray-500 text-sm">
+                                <span class="mr-2">👁️</span>
+                                <span>9.3k officers trained</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Surveillance Videos -->
+                <div class="video-card bg-white rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition-all duration-300" data-category="surveillance">
+                    <div class="relative">
+                        <div class="bg-gradient-to-br from-green-600 to-teal-700 h-48 flex items-center justify-center">
+                            <div class="text-center text-white">
+                                <div class="text-6xl mb-4">📹</div>
+                                <div class="text-lg font-semibold">Surveillance Mastery</div>
+                            </div>
+                        </div>
+                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
+                            <button onclick="openVideoModal('surveillance-mastery')" class="bg-white text-green-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-300">
+                                ▶ Watch Training
+                            </button>
+                        </div>
+                        <div class="absolute top-4 right-4 bg-green-600 text-white px-3 py-1 rounded-full text-sm font-semibold">25:20</div>
+                        <div class="absolute top-4 left-4 bg-blue-500 text-white px-2 py-1 rounded text-xs font-bold">TECHNICAL</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Advanced Surveillance & Counter-Surveillance</h3>
+                        <p class="text-gray-600 mb-4">Professional surveillance techniques and detection methods. Learn from intelligence agency veterans.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-green-600 font-medium">📹 Surveillance</span>
+                            <div class="flex items-center text-gray-500 text-sm">
+                                <span class="mr-2">👁️</span>
+                                <span>7.1k officers trained</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="video-card bg-white rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition-all duration-300" data-category="surveillance">
+                    <div class="relative">
+                        <div class="bg-gradient-to-br from-teal-600 to-cyan-700 h-48 flex items-center justify-center">
+                            <div class="text-center text-white">
+                                <div class="text-6xl mb-4">🔍</div>
+                                <div class="text-lg font-semibold">Investigation Techniques</div>
+                            </div>
+                        </div>
+                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
+                            <button onclick="openVideoModal('investigation-techniques')" class="bg-white text-teal-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-300">
+                                ▶ Watch Training
+                            </button>
+                        </div>
+                        <div class="absolute top-4 right-4 bg-teal-600 text-white px-3 py-1 rounded-full text-sm font-semibold">19:10</div>
+                        <div class="absolute top-4 left-4 bg-orange-500 text-white px-2 py-1 rounded text-xs font-bold">DETECTIVE</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Criminal Investigation & Evidence Collection</h3>
+                        <p class="text-gray-600 mb-4">CSI-level investigation skills for security officers. Crime scene preservation and evidence handling.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-teal-600 font-medium">🔍 Surveillance</span>
+                            <div class="flex items-center text-gray-500 text-sm">
+                                <span class="mr-2">👁️</span>
+                                <span>5.4k officers trained</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Emergency Response Videos -->
+                <div class="video-card bg-white rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition-all duration-300" data-category="emergency">
+                    <div class="relative">
+                        <div class="bg-gradient-to-br from-red-600 to-pink-700 h-48 flex items-center justify-center">
+                            <div class="text-center text-white">
+                                <div class="text-6xl mb-4">🚨</div>
+                                <div class="text-lg font-semibold">Crisis Management</div>
+                            </div>
+                        </div>
+                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
+                            <button onclick="openVideoModal('crisis-management')" class="bg-white text-red-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-300">
+                                ▶ Watch Training
+                            </button>
+                        </div>
+                        <div class="absolute top-4 right-4 bg-red-600 text-white px-3 py-1 rounded-full text-sm font-semibold">14:35</div>
+                        <div class="absolute top-4 left-4 bg-yellow-500 text-black px-2 py-1 rounded text-xs font-bold">CRITICAL</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Crisis Management & Emergency Response</h3>
+                        <p class="text-gray-600 mb-4">Command center operations during major incidents. Coordination with law enforcement and emergency services.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-red-600 font-medium">🚨 Emergency Response</span>
+                            <div class="flex items-center text-gray-500 text-sm">
+                                <span class="mr-2">👁️</span>
+                                <span>11.2k officers trained</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="video-card bg-white rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition-all duration-300" data-category="emergency">
+                    <div class="relative">
+                        <div class="bg-gradient-to-br from-yellow-600 to-orange-700 h-48 flex items-center justify-center">
+                            <div class="text-center text-white">
+                                <div class="text-6xl mb-4">🔥</div>
+                                <div class="text-lg font-semibold">Tactical Response</div>
+                            </div>
+                        </div>
+                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
+                            <button onclick="openVideoModal('tactical-response')" class="bg-white text-yellow-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-300">
+                                ▶ Watch Training
+                            </button>
+                        </div>
+                        <div class="absolute top-4 right-4 bg-yellow-600 text-white px-3 py-1 rounded-full text-sm font-semibold">21:50</div>
+                        <div class="absolute top-4 left-4 bg-red-500 text-white px-2 py-1 rounded text-xs font-bold">SWAT-LEVEL</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Active Shooter & Terrorist Response</h3>
+                        <p class="text-gray-600 mb-4">Counter-terrorism tactics for security officers. Life-saving protocols used by special forces worldwide.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-yellow-600 font-medium">🔥 Emergency Response</span>
+                            <div class="flex items-center text-gray-500 text-sm">
+                                <span class="mr-2">👁️</span>
+                                <span>15.7k officers trained</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="video-card bg-white rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition-all duration-300" data-category="tactical">
+                    <div class="relative">
+                        <div class="bg-gradient-to-br from-gray-700 to-gray-900 h-48 flex items-center justify-center">
+                            <div class="text-center text-white">
+                                <div class="text-6xl mb-4">🌙</div>
+                                <div class="text-lg font-semibold">Night Operations</div>
+                            </div>
+                        </div>
+                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
+                            <button onclick="openVideoModal('night-operations')" class="bg-white text-gray-700 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-300">
+                                ▶ Watch Training
+                            </button>
+                        </div>
+                        <div class="absolute top-4 right-4 bg-gray-700 text-white px-3 py-1 rounded-full text-sm font-semibold">13:25</div>
+                        <div class="absolute top-4 left-4 bg-indigo-500 text-white px-2 py-1 rounded text-xs font-bold">SPECIALIST</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Night Operations & Low-Light Tactics</h3>
+                        <p class="text-gray-600 mb-4">Special operations techniques for nighttime security. Night vision, stealth movement, and darkness advantages.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-gray-700 font-medium">🌙 Tactical Operations</span>
+                            <div class="flex items-center text-gray-500 text-sm">
+                                <span class="mr-2">👁️</span>
+                                <span>4.9k officers trained</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div class="mt-16 text-center">
+                <div class="bg-gradient-to-r from-red-600 to-orange-600 text-white p-8 rounded-xl">
+                    <h3 class="text-2xl font-bold mb-4">🎖️ Ready to Join the Elite?</h3>
+                    <p class="text-lg mb-6">Our advanced training programs are used by security agencies worldwide. Get certified and advance your career.</p>
+                    <div class="space-x-4">
+                        <button onclick="openContactModal()" class="bg-white text-red-600 hover:bg-gray-100 px-8 py-3 rounded-lg font-semibold transition duration-300">Enroll in Training</button>
+                        <button onclick="sendWhatsAppMessage('I want to join your elite security officer training program')" class="border-2 border-white text-white hover:bg-white hover:text-red-600 px-8 py-3 rounded-lg font-semibold transition duration-300">WhatsApp Instructor</button>
                     </div>
                 </div>
             </div>
@@ -920,7 +1233,11 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         <div class="bg-white p-6 rounded-xl shadow-lg border text-center">
                             <div class="mb-4">
-                                <div class="w-24 h-24 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full mx-auto flex items-center justify-center text-2xl text-white font-bold">
+                                <img src="https://drive.google.com/uc?export=view&id=1mHcST6YpebqfL4-5u0SWgdy1S2U3CR5X" 
+                                     alt="David Kwame Blessings - Chairman & CEO" 
+                                     class="w-24 h-24 rounded-full mx-auto object-cover border-4 border-blue-200"
+                                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                <div class="w-24 h-24 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full mx-auto flex items-center justify-center text-2xl text-white font-bold border-4 border-blue-200" style="display: none;">
                                     DKB
                                 </div>
                             </div>
@@ -942,7 +1259,11 @@
                         
                         <div class="bg-white p-6 rounded-xl shadow-lg border text-center">
                             <div class="mb-4">
-                                <div class="w-24 h-24 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full mx-auto flex items-center justify-center text-3xl text-white font-bold">
+                                <img src="https://drive.google.com/uc?export=view&id=1ubVeldCbrB1QqaMJllqyTxb8B4RjxO9P" 
+                                     alt="Ernest Adu - Operations Director" 
+                                     class="w-24 h-24 rounded-full mx-auto object-cover border-4 border-purple-200"
+                                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                <div class="w-24 h-24 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full mx-auto flex items-center justify-center text-3xl text-white font-bold" style="display: none;">
                                     EA
                                 </div>
                             </div>
@@ -964,7 +1285,11 @@
                         
                         <div class="bg-white p-6 rounded-xl shadow-lg border text-center">
                             <div class="mb-4">
-                                <div class="w-24 h-24 bg-gradient-to-br from-pink-500 to-pink-600 rounded-full mx-auto flex items-center justify-center text-3xl text-white font-bold">
+                                <img src="https://drive.google.com/uc?export=view&id=1ka6sEVY7koUYlHEkASGbFjSlvqZdC23p" 
+                                     alt="Evelyn Awash - Secretary" 
+                                     class="w-24 h-24 rounded-full mx-auto object-cover border-4 border-pink-200"
+                                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                <div class="w-24 h-24 bg-gradient-to-br from-pink-500 to-pink-600 rounded-full mx-auto flex items-center justify-center text-3xl text-white font-bold" style="display: none;">
                                     EA
                                 </div>
                             </div>
@@ -1141,174 +1466,435 @@
         </div>
     </div>
 
-    <!-- WhatsApp Chat Widget -->
-    <div id="whatsapp-widget" class="fixed bottom-6 right-6 z-50">
-        <!-- WhatsApp Chat Button -->
-        <div id="whatsapp-button" class="bg-green-500 hover:bg-green-600 text-white rounded-full p-4 shadow-lg cursor-pointer transition-all duration-300 transform hover:scale-110" onclick="toggleWhatsAppChat()">
-            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.785"/>
-            </svg>
-        </div>
-
-        <!-- WhatsApp Chat Window -->
-        <div id="whatsapp-chat" class="hidden absolute bottom-20 right-0 bg-white rounded-lg shadow-2xl w-80 max-w-sm border border-gray-200 overflow-hidden">
-            <!-- Chat Header -->
-            <div class="bg-green-500 text-white p-4 flex items-center justify-between">
-                <div class="flex items-center">
-                    <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center mr-3">
-                        <svg class="w-6 h-6 text-green-500" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.785"/>
-                        </svg>
-                    </div>
-                    <div>
-                        <div class="font-semibold">Sagittarius Security</div>
-                        <div class="text-xs opacity-90">Typically replies instantly</div>
-                    </div>
+    <!-- Video Modal -->
+    <div id="video-modal" class="fixed inset-0 bg-black bg-opacity-75 z-50 flex items-center justify-center p-4" style="display: none;">
+        <div class="bg-white rounded-xl max-w-6xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 id="video-modal-title" class="text-2xl font-bold text-gray-900">Security Training Video</h3>
+                    <button onclick="closeVideoModal()" class="text-gray-400 hover:text-gray-600 text-2xl font-bold">×</button>
                 </div>
-                <button onclick="closeWhatsAppChat()" class="text-white hover:text-gray-200 text-xl font-bold">×</button>
-            </div>
-
-            <!-- Chat Body -->
-            <div class="p-4 bg-gray-50 max-h-64 overflow-y-auto">
-                <!-- Welcome Message -->
-                <div class="mb-4">
-                    <div class="bg-white p-3 rounded-lg shadow-sm border-l-4 border-green-500">
-                        <div class="text-sm text-gray-600 mb-1">Sagittarius Security Team</div>
-                        <div class="text-gray-800">👋 Hello! How can we help secure your property today?</div>
-                        <div class="text-xs text-gray-500 mt-2">Just now</div>
-                    </div>
+                
+                <!-- Tab Navigation -->
+                <div class="flex border-b border-gray-200 mb-6">
+                    <button onclick="switchTab('overview')" class="tab-btn active px-6 py-3 text-sm font-medium text-blue-600 border-b-2 border-blue-600">Overview</button>
+                    <button onclick="switchTab('curriculum')" class="tab-btn px-6 py-3 text-sm font-medium text-gray-500 hover:text-gray-700">Curriculum</button>
+                    <button onclick="switchTab('assessment')" class="tab-btn px-6 py-3 text-sm font-medium text-gray-500 hover:text-gray-700">Assessment</button>
+                    <button onclick="switchTab('certification')" class="tab-btn px-6 py-3 text-sm font-medium text-gray-500 hover:text-gray-700">Certification</button>
                 </div>
-
-                <!-- Quick Action Buttons -->
-                <div class="space-y-2">
-                    <button onclick="sendWhatsAppMessage('I need a security quote')" class="w-full text-left bg-white hover:bg-gray-50 p-3 rounded-lg border border-gray-200 transition-colors duration-200">
-                        <div class="flex items-center">
-                            <span class="text-2xl mr-3">💰</span>
-                            <div>
-                                <div class="font-medium text-gray-800">Get a Quote</div>
-                                <div class="text-sm text-gray-600">Request pricing for our services</div>
-                            </div>
-                        </div>
-                    </button>
-
-                    <button onclick="sendWhatsAppMessage('I have a security emergency')" class="w-full text-left bg-red-50 hover:bg-red-100 p-3 rounded-lg border border-red-200 transition-colors duration-200">
-                        <div class="flex items-center">
-                            <span class="text-2xl mr-3">🚨</span>
-                            <div>
-                                <div class="font-medium text-red-800">Emergency</div>
-                                <div class="text-sm text-red-600">Urgent security assistance needed</div>
-                            </div>
-                        </div>
-                    </button>
-
-                    <button onclick="sendWhatsAppMessage('I want to learn about your services')" class="w-full text-left bg-white hover:bg-gray-50 p-3 rounded-lg border border-gray-200 transition-colors duration-200">
-                        <div class="flex items-center">
-                            <span class="text-2xl mr-3">ℹ️</span>
-                            <div>
-                                <div class="font-medium text-gray-800">Service Info</div>
-                                <div class="text-sm text-gray-600">Learn about our security solutions</div>
-                            </div>
-                        </div>
-                    </button>
-
-                    <button onclick="sendWhatsAppMessage('I need CCTV installation')" class="w-full text-left bg-white hover:bg-gray-50 p-3 rounded-lg border border-gray-200 transition-colors duration-200">
-                        <div class="flex items-center">
-                            <span class="text-2xl mr-3">📹</span>
-                            <div>
-                                <div class="font-medium text-gray-800">CCTV Installation</div>
-                                <div class="text-sm text-gray-600">Camera system setup</div>
-                            </div>
-                        </div>
-                    </button>
+                
+                <!-- Tab Content -->
+                <div id="tab-content">
+                    <!-- Content will be dynamically loaded here -->
+                </div>
+                
+                <div class="mt-6 text-center">
+                    <button onclick="closeVideoModal()" class="bg-gray-300 hover:bg-gray-400 text-gray-700 py-3 px-8 rounded-lg font-semibold transition duration-300 mr-4">Close</button>
+                    <button onclick="openContactModal(); closeVideoModal();" class="bg-blue-600 hover:bg-blue-700 text-white py-3 px-8 rounded-lg font-semibold transition duration-300">Enroll in Training</button>
                 </div>
             </div>
-
-            <!-- Chat Input -->
-            <div class="p-4 border-t border-gray-200 bg-white">
-                <div class="flex items-center space-x-2 mb-3">
-                    <input type="text" 
-                           id="whatsapp-message-input" 
-                           placeholder="Type your message..." 
-                           class="flex-1 px-3 py-2 border border-gray-300 rounded-full focus:ring-2 focus:ring-green-500 focus:border-transparent text-sm"
-                           onkeypress="handleWhatsAppEnter(event)">
-                    <button onclick="sendCustomWhatsAppMessage()" class="bg-green-500 hover:bg-green-600 text-white rounded-full p-2 transition-colors duration-200">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
-                        </svg>
-                    </button>
-                </div>
-                <button onclick="openRealWhatsApp()" class="w-full bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-lg text-sm font-semibold transition-colors duration-200 flex items-center justify-center">
-                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.785"/>
-                    </svg>
-                    Continue on WhatsApp
-                </button>
-                <div class="text-xs text-gray-500 mt-2 text-center">
-                    Chat here or continue on WhatsApp for real-time responses
-                </div>
-            </div>
-        </div>
-
-        <!-- Notification Badge -->
-        <div id="whatsapp-notification" class="absolute -top-2 -left-2 bg-red-500 text-white text-xs rounded-full w-6 h-6 flex items-center justify-center font-bold animate-pulse">
-            1
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div>
-                    <div class="text-2xl font-bold mb-2">🏹 Sagittarius Security</div>
-                    <div class="text-sm text-gray-300 italic mb-4">Integrity, Excellence and Reliability</div>
-                    <p class="text-gray-400">Professional security solutions with precision and reliability.</p>
-                </div>
-                <div>
-                    <h4 class="text-lg font-semibold mb-4">Services</h4>
-                    <ul class="space-y-2 text-gray-400">
-                        <li>Personal Protection</li>
-                        <li>Corporate Security</li>
-                        <li>Surveillance Systems</li>
-                        <li>CCTV Installation</li>
-                        <li>Risk Assessment</li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-lg font-semibold mb-4">Company</h4>
-                    <ul class="space-y-2 text-gray-400">
-                        <li>About Us</li>
-                        <li>Our Team</li>
-                        <li>Careers</li>
-                        <li>News</li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-lg font-semibold mb-4">Contact</h4>
-                    <ul class="space-y-2 text-gray-400">
-                        <li>+233 55 715 0062</li>
-                        <li>+233 20 781 6778</li>
-                        <li>info@sagittariussecurity.org</li>
-                        <li>24/7 Emergency Line</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-                <p>&copy; 2025 Sagittarius Security Services. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+    <!-- WhatsApp Chat Widget -->
+    <div id="whatsapp-widget" class="fixed bottom-6 right-6 z-40">
+        <button onclick="sendWhatsAppMessage('Hello, I need security services information')" class="bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg transition-all duration-300 transform hover:scale-110">
+            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+            </svg>
+        </button>
+    </div>
 
     <script>
         // Mobile menu toggle
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-
-        mobileMenuBtn.addEventListener('click', () => {
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
             mobileMenu.classList.toggle('hidden');
         });
 
-        // Smooth scrolling for navigation links
+        // Services Modal Functions
+        function openServicesModal() {
+            document.getElementById('services-modal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeServicesModal() {
+            document.getElementById('services-modal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // About Modal Functions
+        function openAboutModal() {
+            document.getElementById('about-modal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeAboutModal() {
+            document.getElementById('about-modal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Contact Modal Functions
+        function openContactModal() {
+            document.getElementById('contact-modal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeContactModal() {
+            document.getElementById('contact-modal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Video Modal Functions
+        function openVideoModal(videoId) {
+            document.getElementById('video-modal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            loadVideoContent(videoId);
+        }
+
+        function closeVideoModal() {
+            document.getElementById('video-modal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Video Filter Functions
+        function filterVideos(category) {
+            const videoCards = document.querySelectorAll('.video-card');
+            const filterBtns = document.querySelectorAll('.video-filter-btn');
+            
+            // Update button states
+            filterBtns.forEach(btn => {
+                btn.classList.remove('active', 'bg-blue-600', 'text-white');
+                btn.classList.add('bg-white', 'text-blue-600', 'border-2', 'border-blue-600');
+            });
+            
+            event.target.classList.add('active', 'bg-blue-600', 'text-white');
+            event.target.classList.remove('bg-white', 'text-blue-600', 'border-2', 'border-blue-600');
+            
+            // Filter videos
+            videoCards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Tab switching for video modal
+        function switchTab(tabName) {
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            tabBtns.forEach(btn => {
+                btn.classList.remove('active', 'text-blue-600', 'border-blue-600');
+                btn.classList.add('text-gray-500');
+            });
+            
+            event.target.classList.add('active', 'text-blue-600', 'border-blue-600', 'border-b-2');
+            event.target.classList.remove('text-gray-500');
+            
+            loadTabContent(tabName);
+        }
+
+        // Load video content based on video ID
+        function loadVideoContent(videoId) {
+            const videoData = {
+                'threat-assessment': {
+                    title: 'Advanced Threat Assessment for Officers',
+                    category: 'Tactical Operations',
+                    duration: '12:45',
+                    description: 'Master professional threat detection techniques used by elite security forces.'
+                },
+                'combat-techniques': {
+                    title: 'Professional Combat & Restraint Techniques',
+                    category: 'Tactical Operations', 
+                    duration: '18:30',
+                    description: 'Military-grade defensive tactics and restraint methods.'
+                },
+                'executive-protection': {
+                    title: 'Executive Protection Protocols',
+                    category: 'Corporate Security',
+                    duration: '22:15', 
+                    description: 'VIP protection strategies used by presidential security details.'
+                },
+                'crowd-control': {
+                    title: 'Advanced Crowd Control & Event Security',
+                    category: 'Corporate Security',
+                    duration: '16:45',
+                    description: 'Riot control psychology and mass event security.'
+                },
+                'surveillance-mastery': {
+                    title: 'Advanced Surveillance & Counter-Surveillance',
+                    category: 'Surveillance',
+                    duration: '25:20',
+                    description: 'Professional surveillance techniques and detection methods.'
+                },
+                'investigation-techniques': {
+                    title: 'Criminal Investigation & Evidence Collection',
+                    category: 'Surveillance',
+                    duration: '19:10',
+                    description: 'CSI-level investigation skills for security officers.'
+                },
+                'crisis-management': {
+                    title: 'Crisis Management & Emergency Response',
+                    category: 'Emergency Response',
+                    duration: '14:35',
+                    description: 'Command center operations during major incidents.'
+                },
+                'tactical-response': {
+                    title: 'Active Shooter & Terrorist Response',
+                    category: 'Emergency Response',
+                    duration: '21:50',
+                    description: 'Counter-terrorism tactics for security officers.'
+                },
+                'night-operations': {
+                    title: 'Night Operations & Low-Light Tactics',
+                    category: 'Tactical Operations',
+                    duration: '13:25',
+                    description: 'Special operations techniques for nighttime security.'
+                }
+            };
+            
+            const video = videoData[videoId];
+            if (video) {
+                document.getElementById('video-modal-title').textContent = video.title;
+                loadTabContent('overview', video);
+            }
+        }
+
+        // Load tab content
+        function loadTabContent(tabName, videoData = null) {
+            const tabContent = document.getElementById('tab-content');
+            
+            switch(tabName) {
+                case 'overview':
+                    tabContent.innerHTML = `
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                            <div>
+                                <div class="bg-gradient-to-br from-blue-600 to-purple-600 h-64 rounded-xl flex items-center justify-center text-white mb-6">
+                                    <div class="text-center">
+                                        <div class="text-6xl mb-4">🎯</div>
+                                        <div class="text-xl font-semibold">${videoData ? videoData.title : 'Training Video'}</div>
+                                        <div class="text-sm mt-2 opacity-75">${videoData ? videoData.duration : ''}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-gray-900 mb-4">Course Overview</h4>
+                                <p class="text-gray-600 mb-6">${videoData ? videoData.description : 'Professional security training content.'}</p>
+                                
+                                <div class="space-y-4">
+                                    <div class="flex items-center">
+                                        <div class="bg-green-100 text-green-600 rounded-full p-2 mr-4">✓</div>
+                                        <span class="text-gray-700">Real-world scenarios and case studies</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <div class="bg-green-100 text-green-600 rounded-full p-2 mr-4">✓</div>
+                                        <span class="text-gray-700">Expert instructor guidance</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <div class="bg-green-100 text-green-600 rounded-full p-2 mr-4">✓</div>
+                                        <span class="text-gray-700">Certification upon completion</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <div class="bg-green-100 text-green-600 rounded-full p-2 mr-4">✓</div>
+                                        <span class="text-gray-700">Lifetime access to materials</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    break;
+                    
+                case 'curriculum':
+                    tabContent.innerHTML = `
+                        <div class="space-y-6">
+                            <h4 class="text-xl font-bold text-gray-900">Course Curriculum</h4>
+                            <div class="space-y-4">
+                                <div class="border border-gray-200 rounded-lg p-4">
+                                    <div class="flex justify-between items-center">
+                                        <h5 class="font-semibold text-gray-900">Module 1: Fundamentals</h5>
+                                        <span class="text-sm text-gray-500">25 min</span>
+                                    </div>
+                                    <p class="text-gray-600 text-sm mt-2">Basic principles and theoretical foundation</p>
+                                </div>
+                                <div class="border border-gray-200 rounded-lg p-4">
+                                    <div class="flex justify-between items-center">
+                                        <h5 class="font-semibold text-gray-900">Module 2: Practical Application</h5>
+                                        <span class="text-sm text-gray-500">35 min</span>
+                                    </div>
+                                    <p class="text-gray-600 text-sm mt-2">Hands-on techniques and real-world scenarios</p>
+                                </div>
+                                <div class="border border-gray-200 rounded-lg p-4">
+                                    <div class="flex justify-between items-center">
+                                        <h5 class="font-semibold text-gray-900">Module 3: Advanced Strategies</h5>
+                                        <span class="text-sm text-gray-500">30 min</span>
+                                    </div>
+                                    <p class="text-gray-600 text-sm mt-2">Expert-level tactics and decision making</p>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    break;
+                    
+                case 'assessment':
+                    tabContent.innerHTML = `
+                        <div class="space-y-6">
+                            <h4 class="text-xl font-bold text-gray-900">Assessment & Evaluation</h4>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="bg-blue-50 p-6 rounded-lg">
+                                    <h5 class="font-semibold text-blue-800 mb-3">📝 Written Exam</h5>
+                                    <p class="text-gray-700 text-sm">Comprehensive test covering all course materials with 80% passing score required.</p>
+                                </div>
+                                <div class="bg-green-50 p-6 rounded-lg">
+                                    <h5 class="font-semibold text-green-800 mb-3">🎯 Practical Assessment</h5>
+                                    <p class="text-gray-700 text-sm">Hands-on demonstration of skills learned during the training program.</p>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    break;
+                    
+                case 'certification':
+                    tabContent.innerHTML = `
+                        <div class="space-y-6">
+                            <h4 class="text-xl font-bold text-gray-900">Professional Certification</h4>
+                            <div class="bg-gradient-to-r from-yellow-50 to-orange-50 p-6 rounded-lg border border-yellow-200">
+                                <div class="flex items-center mb-4">
+                                    <div class="text-3xl mr-4">🏆</div>
+                                    <div>
+                                        <h5 class="font-semibold text-gray-900">Sagittarius Security Professional Certificate</h5>
+                                        <p class="text-gray-600 text-sm">Recognized by security agencies across Ghana and West Africa</p>
+                                    </div>
+                                </div>
+                                <div class="space-y-3">
+                                    <div class="flex items-center">
+                                        <div class="bg-yellow-500 text-white rounded-full p-1 mr-3 text-xs">✓</div>
+                                        <span class="text-gray-700 text-sm">Digital certificate with verification code</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <div class="bg-yellow-500 text-white rounded-full p-1 mr-3 text-xs">✓</div>
+                                        <span class="text-gray-700 text-sm">Continuing education credits</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <div class="bg-yellow-500 text-white rounded-full p-1 mr-3 text-xs">✓</div>
+                                        <span class="text-gray-700 text-sm">Career advancement opportunities</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    break;
+            }
+        }
+
+        // WhatsApp function
+        function sendWhatsAppMessage(message) {
+            const phoneNumber = '233557150062'; // Ghana number format
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+            window.open(whatsappURL, '_blank');
+        }
+
+        // Contact form handling
+        function handleContactForm(formId, statusId, submitBtnId) {
+            const form = document.getElementById(formId);
+            const statusDiv = document.getElementById(statusId);
+            const submitBtn = document.getElementById(submitBtnId);
+            
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Show loading state
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Sending...';
+                statusDiv.className = 'p-4 rounded-lg bg-blue-50 border border-blue-200';
+                statusDiv.innerHTML = '<p class="text-blue-800">📤 Sending your message...</p>';
+                statusDiv.classList.remove('hidden');
+                
+                // Simulate form processing
+                setTimeout(() => {
+                    // Show success message
+                    statusDiv.className = 'p-4 rounded-lg bg-green-50 border border-green-200';
+                    statusDiv.innerHTML = `
+                        <div class="text-green-800">
+                            <p class="font-semibold mb-2">✅ Message Sent Successfully!</p>
+                            <p class="text-sm">Thank you for contacting Sagittarius Security. We'll respond within 24 hours.</p>
+                            <p class="text-sm mt-2"><strong>For urgent matters:</strong> Call +233 55 715 0062</p>
+                        </div>
+                    `;
+                    
+                    // Reset form
+                    form.reset();
+                    
+                    // Reset button
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Send Message';
+                    
+                    // Auto-hide success message after 5 seconds
+                    setTimeout(() => {
+                        statusDiv.classList.add('hidden');
+                    }, 5000);
+                    
+                }, 2000);
+            });
+        }
+
+        // Live time display function
+        function updateTime() {
+            const now = new Date();
+            const options = {
+                timeZone: 'Africa/Accra',
+                hour12: true,
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            };
+            const timeString = now.toLocaleTimeString('en-US', options);
+            const timeElement = document.getElementById('current-time');
+            if (timeElement) {
+                timeElement.textContent = timeString;
+            }
+        }
+
+        // Initialize contact forms and time display
+        document.addEventListener('DOMContentLoaded', function() {
+            // Main contact form
+            if (document.getElementById('contact-form')) {
+                handleContactForm('contact-form', 'form-status', 'submit-btn');
+            }
+            
+            // Modal contact form
+            if (document.getElementById('modal-contact-form')) {
+                handleContactForm('modal-contact-form', 'modal-form-status', 'modal-submit-btn');
+            }
+            
+            // Initialize time display
+            updateTime();
+            setInterval(updateTime, 1000); // Update every second
+        });
+
+        // Close modals when clicking outside
+        window.addEventListener('click', function(e) {
+            const servicesModal = document.getElementById('services-modal');
+            const aboutModal = document.getElementById('about-modal');
+            const contactModal = document.getElementById('contact-modal');
+            const videoModal = document.getElementById('video-modal');
+            
+            if (e.target === servicesModal) {
+                closeServicesModal();
+            }
+            if (e.target === aboutModal) {
+                closeAboutModal();
+            }
+            if (e.target === contactModal) {
+                closeContactModal();
+            }
+            if (e.target === videoModal) {
+                closeVideoModal();
+            }
+        });
+
+        // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1319,511 +1905,8 @@
                         block: 'start'
                     });
                 }
-                // Close mobile menu if open
-                mobileMenu.classList.add('hidden');
             });
         });
-
-        // Reliable email delivery system
-        function sendEmail(formData, isModal = false) {
-            const statusElement = document.getElementById(isModal ? 'modal-form-status' : 'form-status');
-            const submitBtn = document.getElementById(isModal ? 'modal-submit-btn' : 'submit-btn');
-            
-            // Show loading state
-            submitBtn.textContent = 'Processing...';
-            submitBtn.disabled = true;
-            statusElement.className = 'p-4 rounded-lg bg-blue-50 border border-blue-200';
-            statusElement.innerHTML = '<p class="text-blue-800">📧 Processing your security inquiry...</p>';
-            statusElement.classList.remove('hidden');
-            
-            // Create comprehensive email content
-            const emailContent = `Security Service Inquiry from Website
-
-Name: ${formData.name}
-Email: ${formData.email}
-Phone: ${formData.phone || 'Not provided'}
-Company: ${formData.company || 'Not provided'}
-Service Needed: ${formData.service}
-Contact Method: ${formData.contact_method || 'Not specified'}
-Urgency: ${formData.urgency || 'Not specified'}
-
-Message:
-${formData.message}
-
-Privacy Consent: ${formData.privacy_consent || 'Not provided'}
-
----
-Sent from Sagittarius Security website
-Date: ${new Date().toLocaleString()}`;
-            
-            // Since we can't send actual emails from frontend, provide immediate alternative contact methods
-            setTimeout(() => {
-                // Always show successful processing with alternative contact methods
-                statusElement.className = 'p-4 rounded-lg bg-green-50 border border-green-200';
-                statusElement.innerHTML = `
-                    <div class="text-green-800">
-                        <p class="font-semibold">✅ Inquiry processed successfully!</p>
-                        <p class="text-sm mt-2">Your security inquiry has been prepared. Choose your preferred contact method below:</p>
-                        
-                        <div class="mt-4 space-y-3">
-                            <div class="bg-white p-4 rounded-lg border-l-4 border-blue-400 shadow-sm">
-                                <p class="font-semibold text-sm text-blue-800 mb-2">📧 Send via Email (Recommended)</p>
-                                <a href="mailto:info@sagittariussecurity.org?subject=Security Service Inquiry - ${encodeURIComponent(formData.service)}&body=${encodeURIComponent(emailContent)}" 
-                                   class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded text-sm font-semibold transition-colors">
-                                   Open Email Client
-                                </a>
-                                <p class="text-xs text-blue-600 mt-1">This will open your email app with the message pre-filled</p>
-                            </div>
-                            
-                            <div class="bg-white p-4 rounded-lg border-l-4 border-green-400 shadow-sm">
-                                <p class="font-semibold text-sm text-green-800 mb-2">💬 Send via WhatsApp (Instant)</p>
-                                <button onclick="sendToWhatsApp('${formData.name.replace(/'/g, "\\'")}', '${formData.service}', '${formData.message.replace(/'/g, "\\'")}'); ${isModal ? 'closeContactModal();' : ''}" 
-                                        class="inline-block bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded text-sm font-semibold transition-colors">
-                                   Send WhatsApp Message
-                                </button>
-                                <p class="text-xs text-green-600 mt-1">Get instant response from our security team</p>
-                            </div>
-                            
-                            <div class="bg-white p-4 rounded-lg border-l-4 border-orange-400 shadow-sm">
-                                <p class="font-semibold text-sm text-orange-800 mb-2">📞 Call Directly (Urgent)</p>
-                                <div class="space-x-3">
-                                    <a href="tel:+233557150062" class="inline-block bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded text-sm font-semibold transition-colors">
-                                       Call +233 55 715 0062
-                                    </a>
-                                    <a href="tel:+233207816778" class="inline-block bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded text-sm font-semibold transition-colors">
-                                       Call +233 20 781 6778
-                                    </a>
-                                </div>
-                                <p class="text-xs text-orange-600 mt-1">24/7 emergency response available</p>
-                            </div>
-                        </div>
-                        
-                        <div class="mt-4 p-3 bg-green-100 rounded border-l-4 border-green-400">
-                            <p class="text-xs text-green-700">
-                                <strong>Inquiry ID:</strong> SS-${Date.now().toString().slice(-6)}<br>
-                                <strong>Service:</strong> ${formData.service}<br>
-                                <strong>Time:</strong> ${new Date().toLocaleString()}<br>
-                                <strong>Status:</strong> Ready to send
-                            </p>
-                        </div>
-                    </div>
-                `;
-                
-                // Store inquiry locally
-                const inquiries = JSON.parse(localStorage.getItem('sagittarius_inquiries') || '[]');
-                inquiries.push({
-                    id: `SS-${Date.now().toString().slice(-6)}`,
-                    timestamp: new Date().toISOString(),
-                    name: formData.name,
-                    email: formData.email,
-                    service: formData.service,
-                    message: formData.message,
-                    status: 'ready_to_send'
-                });
-                localStorage.setItem('sagittarius_inquiries', JSON.stringify(inquiries.slice(-10)));
-                
-                // Reset button
-                submitBtn.textContent = 'Send Message';
-                submitBtn.disabled = false;
-                
-                // Auto-hide after 15 seconds unless user interacts
-                setTimeout(() => {
-                    if (!statusElement.matches(':hover')) {
-                        statusElement.classList.add('hidden');
-                        if (isModal) {
-                            // Don't auto-close modal, let user choose contact method
-                        }
-                    }
-                }, 15000);
-                
-            }, 1000); // Short delay to show processing
-        }
-        
-        // Function to send message via WhatsApp
-        function sendToWhatsApp(name, service, message) {
-            const whatsappMessage = `Hello Sagittarius Security,
-
-I'm ${name} and I'm interested in your ${service} service.
-
-${message}
-
-Please contact me for more information.
-
-Sent from your website contact form.`;
-            
-            const encodedMessage = encodeURIComponent(whatsappMessage);
-            const whatsappURL = `https://wa.me/233557150062?text=${encodedMessage}`;
-            window.open(whatsappURL, '_blank');
-        }
-        
-        // Retry function for failed sends
-        function retryEmailSend() {
-            const forms = [document.getElementById('contact-form'), document.getElementById('modal-contact-form')];
-            
-            for (let form of forms) {
-                if (form && !form.classList.contains('hidden')) {
-                    const formData = new FormData(form);
-                    const data = {};
-                    for (let [key, value] of formData.entries()) {
-                        data[key] = value;
-                    }
-                    
-                    // Add checkbox value manually
-                    data.privacy_consent = form.privacy_consent.checked ? form.privacy_consent.value : '';
-                    
-                    const isModal = form.id === 'modal-contact-form';
-                    sendEmail(data, isModal);
-                    break;
-                }
-            }
-        }
-        
-        // Main contact form submission
-        document.getElementById('contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const formData = {
-                name: this.name.value,
-                email: this.email.value,
-                phone: this.phone.value,
-                company: this.company.value,
-                service: this.service.value,
-                message: this.message.value,
-                contact_method: this.contact_method.value,
-                urgency: this.urgency.value,
-                privacy_consent: this.privacy_consent.checked ? this.privacy_consent.value : ''
-            };
-            
-            sendEmail(formData, false);
-        });
-
-        // Add scroll effect to navigation
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 100) {
-                nav.classList.add('shadow-xl');
-            } else {
-                nav.classList.remove('shadow-xl');
-            }
-        });
-
-        // Function to scroll to any section
-        function scrollToSection(sectionId) {
-            const target = document.getElementById(sectionId);
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        }
-
-        // Services Modal Functions
-        function openServicesModal() {
-            const modal = document.getElementById('services-modal');
-            modal.style.display = 'flex';
-            modal.classList.remove('hidden');
-            document.body.style.overflow = 'hidden'; // Prevent background scrolling
-        }
-
-        function closeServicesModal() {
-            const modal = document.getElementById('services-modal');
-            modal.style.display = 'none';
-            modal.classList.add('hidden');
-            document.body.style.overflow = 'auto'; // Restore scrolling
-        }
-
-        // Close services modal when clicking outside
-        document.getElementById('services-modal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeServicesModal();
-            }
-        });
-
-        // Contact Modal Functions
-        function openContactModal() {
-            const modal = document.getElementById('contact-modal');
-            modal.style.display = 'flex';
-            modal.classList.remove('hidden');
-            document.body.style.overflow = 'hidden'; // Prevent background scrolling
-            
-            // Focus on the first input field
-            setTimeout(() => {
-                const firstInput = document.querySelector('#modal-contact-form input[type="text"]');
-                if (firstInput) {
-                    firstInput.focus();
-                }
-            }, 100);
-        }
-
-        function closeContactModal() {
-            const modal = document.getElementById('contact-modal');
-            modal.style.display = 'none';
-            modal.classList.add('hidden');
-            document.body.style.overflow = 'auto'; // Restore scrolling
-            
-            // Reset form
-            document.getElementById('modal-contact-form').reset();
-        }
-
-        // Close modal when clicking outside
-        document.getElementById('contact-modal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeContactModal();
-            }
-        });
-
-        // About Modal Functions
-        function openAboutModal() {
-            const modal = document.getElementById('about-modal');
-            modal.style.display = 'flex';
-            modal.classList.remove('hidden');
-            document.body.style.overflow = 'hidden'; // Prevent background scrolling
-        }
-
-        function closeAboutModal() {
-            const modal = document.getElementById('about-modal');
-            modal.style.display = 'none';
-            modal.classList.add('hidden');
-            document.body.style.overflow = 'auto'; // Restore scrolling
-        }
-
-        // Close about modal when clicking outside
-        document.getElementById('about-modal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeAboutModal();
-            }
-        });
-
-        // Close modal with Escape key
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closeContactModal();
-                closeServicesModal();
-                closeAboutModal();
-            }
-        });
-
-        // Modal form submission
-        document.getElementById('modal-contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const formData = {
-                name: this.name.value,
-                email: this.email.value,
-                phone: this.phone.value,
-                company: this.company.value,
-                service: this.service.value,
-                message: this.message.value,
-                contact_method: this.contact_method.value,
-                urgency: this.urgency.value,
-                privacy_consent: this.privacy_consent.checked ? this.privacy_consent.value : ''
-            };
-            
-            sendEmail(formData, true);
-        });
-
-        // Function to scroll to contact form and focus on first input (legacy support)
-        function scrollToContactForm() {
-            openContactModal();
-        }
-
-
-
-        // WhatsApp Chat Functions
-        let whatsAppChatOpen = false;
-        const whatsAppNumber = '+233557150062'; // Sagittarius Security WhatsApp number
-
-        function toggleWhatsAppChat() {
-            const chatWindow = document.getElementById('whatsapp-chat');
-            const notification = document.getElementById('whatsapp-notification');
-            
-            if (whatsAppChatOpen) {
-                closeWhatsAppChat();
-            } else {
-                openWhatsAppChat();
-            }
-        }
-
-        function openWhatsAppChat() {
-            const chatWindow = document.getElementById('whatsapp-chat');
-            const notification = document.getElementById('whatsapp-notification');
-            
-            chatWindow.classList.remove('hidden');
-            whatsAppChatOpen = true;
-            
-            // Hide notification badge
-            notification.style.display = 'none';
-            
-            // Focus on input
-            setTimeout(() => {
-                const input = document.getElementById('whatsapp-message-input');
-                if (input) input.focus();
-            }, 100);
-        }
-
-        function closeWhatsAppChat() {
-            const chatWindow = document.getElementById('whatsapp-chat');
-            chatWindow.classList.add('hidden');
-            whatsAppChatOpen = false;
-        }
-
-        function sendWhatsAppMessage(message) {
-            // Add message to chat history
-            addMessageToChat(message, 'user');
-            
-            // Show typing indicator
-            showTypingIndicator();
-            
-            // Simulate response after a short delay
-            setTimeout(() => {
-                hideTypingIndicator();
-                addMessageToChat("Thanks for your message! Our security team will respond shortly. For immediate assistance, please call +233 55 715 0062", 'agent');
-            }, 1500);
-            
-            // Clear input if it was a custom message
-            const input = document.getElementById('whatsapp-message-input');
-            if (input) input.value = '';
-        }
-
-        function sendCustomWhatsAppMessage() {
-            const input = document.getElementById('whatsapp-message-input');
-            const message = input.value.trim();
-            
-            if (message) {
-                sendWhatsAppMessage(message);
-            }
-        }
-
-        function addMessageToChat(message, sender) {
-            const chatBody = document.querySelector('#whatsapp-chat .bg-gray-50');
-            const messageDiv = document.createElement('div');
-            messageDiv.className = 'mb-3';
-            
-            const currentTime = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
-            
-            if (sender === 'user') {
-                messageDiv.innerHTML = `
-                    <div class="flex justify-end">
-                        <div class="bg-green-500 text-white p-3 rounded-lg max-w-xs">
-                            <div class="text-sm">${message}</div>
-                            <div class="text-xs opacity-75 mt-1">${currentTime}</div>
-                        </div>
-                    </div>
-                `;
-            } else {
-                messageDiv.innerHTML = `
-                    <div class="bg-white p-3 rounded-lg shadow-sm border-l-4 border-green-500 max-w-xs">
-                        <div class="text-sm text-gray-600 mb-1">Sagittarius Security Team</div>
-                        <div class="text-gray-800 text-sm">${message}</div>
-                        <div class="text-xs text-gray-500 mt-2">${currentTime}</div>
-                    </div>
-                `;
-            }
-            
-            chatBody.appendChild(messageDiv);
-            
-            // Scroll to bottom
-            chatBody.scrollTop = chatBody.scrollHeight;
-        }
-
-        function showTypingIndicator() {
-            const chatBody = document.querySelector('#whatsapp-chat .bg-gray-50');
-            const typingDiv = document.createElement('div');
-            typingDiv.id = 'typing-indicator';
-            typingDiv.className = 'mb-3';
-            typingDiv.innerHTML = `
-                <div class="bg-white p-3 rounded-lg shadow-sm border-l-4 border-green-500 max-w-xs">
-                    <div class="text-sm text-gray-600 mb-1">Sagittarius Security Team</div>
-                    <div class="flex items-center text-gray-500">
-                        <div class="flex space-x-1">
-                            <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
-                            <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 0.1s"></div>
-                            <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
-                        </div>
-                        <span class="ml-2 text-xs">typing...</span>
-                    </div>
-                </div>
-            `;
-            
-            chatBody.appendChild(typingDiv);
-            chatBody.scrollTop = chatBody.scrollHeight;
-        }
-
-        function hideTypingIndicator() {
-            const typingIndicator = document.getElementById('typing-indicator');
-            if (typingIndicator) {
-                typingIndicator.remove();
-            }
-        }
-
-        function openRealWhatsApp() {
-            // Get the last user message from chat or use default
-            const chatMessages = document.querySelectorAll('#whatsapp-chat .bg-green-500');
-            let lastMessage = "Hello, I'm interested in your security services from your website, kindly tell me more";
-            
-            if (chatMessages.length > 0) {
-                const lastUserMessage = chatMessages[chatMessages.length - 1];
-                const messageText = lastUserMessage.querySelector('.text-sm');
-                if (messageText) {
-                    lastMessage = messageText.textContent;
-                }
-            }
-            
-            // Encode the message for URL
-            const encodedMessage = encodeURIComponent(lastMessage);
-            
-            // Create WhatsApp URL with proper formatting
-            const cleanNumber = whatsAppNumber.replace(/[^0-9]/g, '');
-            const whatsappURL = `https://wa.me/${cleanNumber}?text=${encodedMessage}`;
-            
-            // Open WhatsApp in current window
-            window.location.href = whatsappURL;
-        }
-
-        function handleWhatsAppEnter(event) {
-            if (event.key === 'Enter') {
-                sendCustomWhatsAppMessage();
-            }
-        }
-
-
-
-        // Close WhatsApp chat when clicking outside
-        document.addEventListener('click', function(e) {
-            const widget = document.getElementById('whatsapp-widget');
-            const chatWindow = document.getElementById('whatsapp-chat');
-            
-            if (whatsAppChatOpen && !widget.contains(e.target)) {
-                closeWhatsAppChat();
-            }
-        });
-
-        // Show notification badge periodically (demo feature)
-        function showWhatsAppNotification() {
-            const notification = document.getElementById('whatsapp-notification');
-            if (!whatsAppChatOpen) {
-                notification.style.display = 'flex';
-                
-                // Hide after 10 seconds if not clicked
-                setTimeout(() => {
-                    if (!whatsAppChatOpen) {
-                        notification.style.display = 'none';
-                    }
-                }, 10000);
-            }
-        }
-
-        // Show notification after page loads
-        setTimeout(showWhatsAppNotification, 5000);
-
-        // Show notification every 2 minutes if chat hasn't been opened
-        setInterval(() => {
-            if (!whatsAppChatOpen) {
-                showWhatsAppNotification();
-            }
-        }, 120000);
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'978451dcf21a73d6',t:'MTc1NjcyNTAxMi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9794f9f8043af48a',t:'MTc1Njg5OTY3MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
-
