@@ -325,6 +325,50 @@
         padding: 18px 12px !important;
       }
     }
+    body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 10px;
+    background: #001f3f; /* dark blue */
+    color: white;
+    font-family: Arial, sans-serif;
+    margin-top: auto;
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+  }
+
+  #clock {
+    color: gold;
+    font-weight: bold;
+    font-size: 1.2em;
+  }
+
+  .clock-icon {
+    color: gold;
+    font-size: 1.2em;
+    margin-right: 5px;
+  }
+
+  /* Tablet */
+  @media (max-width: 768px) {
+    #clock, .clock-icon {
+      font-size: 1em;
+    }
+  }
+
+  /* Mobile */
+  @media (max-width: 480px) {
+    #clock, .clock-icon {
+      font-size: 0.9em;
+    }
+  }
   </style>
 </head>
 <body>
@@ -345,9 +389,9 @@
 
   <section class="hero active" id="home">
     <div class="hero-images">
-      <img src="security.PNG" alt="Security" class="hero-img">
-      <img src="cctv.PNG" alt="CCTV" class="hero-img">
-      <img src="Access control.PNG" alt="Access Control" class="hero-img">
+      <img src="security.png" alt="Security" class="hero-img">
+      <img src="cctv.png" alt="CCTV" class="hero-img">
+      <img src="Access control.png" alt="Access Control" class="hero-img">
     </div>
     <h1>Protecting What Matters Most</h1>
     <p>Your trusted partner in security solutions.</p>
@@ -394,7 +438,7 @@
         <div class="horizontal-card-title">Board of Directors</div>
         <div class="board-row">
           <div class="board-member-card">
-            <img src="David.jpeg" alt="David Kwame Blessings" class="board-member-img">
+            <img src="David.png" alt="David Kwame Blessings" class="board-member-img">
             <span class="board-name">David Kwame Blessings</span>
             <span class="board-role">Chairman &amp; CEO</span>
             <span class="board-desc">Over 20 years of experience in security management and corporate leadership. Expert in strategic planning and business development.</span>
@@ -418,7 +462,7 @@
             <span class="board-desc">Leading our technological innovations in security systems and surveillance. Specialist in advanced security technology integration.</span>
           </div>
           <div class="board-member-card">
-            <img src="Evelyn.jpeg" alt="Evelyn Awash" class="board-member-img">
+            <img src="Evelyn.png" alt="Evelyn Awash" class="board-member-img">
             <span class="board-name">Evelyn Awash</span>
             <span class="board-role">Secretary</span>
             <span class="board-desc">Experienced administrative professional managing corporate governance and board communications. Ensures efficient operations and regulatory compliance.</span>
@@ -432,7 +476,7 @@
     <h2>Our Services</h2>
     <div class="services-grid">
       <div class="service-card">
-        <img src="Personal Protection.PNG" alt="Personal Protection">
+        <img src="bodyguard.jpg" alt="Personal Protection">
         <div class="service-title">Personal Protection</div>
         <div class="service-desc">Professional bodyguard services for executives, celebrities, and high-profile individuals.</div>
         <ul class="service-features">
@@ -440,9 +484,10 @@
           <li>Event security</li>
           <li>Travel security</li>
         </ul>
+        <a href="#" class="service-cta">Get Quote</a>
       </div>
       <div class="service-card">
-        <img src="Corporate Security.PNG" alt="Corporate Security">
+        <img src="corporate-building.jpg" alt="Corporate Security">
         <div class="service-title">Corporate Security</div>
         <div class="service-desc">Comprehensive security solutions for businesses and corporate facilities.</div>
         <ul class="service-features">
@@ -450,9 +495,10 @@
           <li>Security assessments</li>
           <li>Employee screening</li>
         </ul>
+        <a href="#" class="service-cta">Get Quote</a>
       </div>
       <div class="service-card">
-        <img src="Surveillance Systems.PNG" alt="Surveillance Systems">
+        <img src="surveillance-camera.jpg" alt="Surveillance Systems">
         <div class="service-title">Surveillance Systems</div>
         <div class="service-desc">Advanced CCTV and monitoring solutions for complete property protection.</div>
         <ul class="service-features">
@@ -460,9 +506,10 @@
           <li>HD camera systems</li>
           <li>Remote access</li>
         </ul>
+        <a href="#" class="service-cta">Get Quote</a>
       </div>
       <div class="service-card">
-        <img src="Alarm Systems.PNG" alt="Alarm Systems">
+        <img src="alarm-monitoring.jpg" alt="Alarm Systems">
         <div class="service-title">Alarm Systems</div>
         <div class="service-desc">State-of-the-art alarm systems with instant response capabilities.</div>
         <ul class="service-features">
@@ -472,7 +519,7 @@
         </ul>
       </div>
       <div class="service-card">
-        <img src="Residential Security.PNG" alt="Residential Security">
+        <img src="home-security.jpg" alt="Residential Security">
         <div class="service-title">Residential Security</div>
         <div class="service-desc">Complete home security solutions for peace of mind.</div>
         <ul class="service-features">
@@ -482,7 +529,7 @@
         </ul>
       </div>
       <div class="service-card">
-        <img src="CCTV Camera Installation.PNG" alt="CCTV Camera Installation">
+        <img src="cctv-installation.jpg" alt="CCTV Camera Installation">
         <div class="service-title">CCTV Camera Installation</div>
         <div class="service-desc">Professional installation of high-definition security cameras for comprehensive coverage.</div>
         <ul class="service-features">
@@ -492,7 +539,7 @@
         </ul>
       </div>
       <div class="service-card">
-        <img src="Risk Assessment.PNG" alt="Risk Assessment">
+        <img src="risk-assessment.jpg" alt="Risk Assessment">
         <div class="service-title">Risk Assessment</div>
         <div class="service-desc">Professional security audits and risk management consulting.</div>
         <ul class="service-features">
@@ -564,11 +611,31 @@
     </script>
   </section>
 
-  <footer>
-    &copy; 2025 Sagittarius Security Services. All rights reserved.
-  </footer>
+  <footer class="footer">
+  &copy; 2025 Sagittarius Security Services. All rights reserved. 
+  <br>
+  <span class="clock-icon">🕒</span> <span id="clock"></span>
+</footer>
 
   <script>
+    function updateClock() {
+    const now = new Date();
+
+    const options = {
+      weekday: 'long', year: 'numeric', month: 'long', day: 'numeric',
+      hour: 'numeric', minute: 'numeric', second: 'numeric',
+      hour12: true,
+      timeZone: 'Africa/Accra',
+      timeZoneName: 'short'
+    };
+
+    const dateTimeString = new Intl.DateTimeFormat(undefined, options).format(now);
+    document.getElementById("clock").textContent = dateTimeString;
+  }
+
+  updateClock();
+  setInterval(updateClock, 1000);
+
     function showSection(sectionId) {
       document.querySelectorAll('section').forEach(sec => {
         sec.classList.remove('active');
@@ -591,7 +658,3 @@
   </script>
 </body>
 </html>
-
-
-
-
