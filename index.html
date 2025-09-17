@@ -1,660 +1,1402 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sagittarius Security Services</title>
-  <link rel="icon" type="image/png" href="Bold Emblem Logo for Sagittarius Security (1).png">
-  <style>
-    body { margin: 0; font-family: 'Segoe UI', Arial, sans-serif; background: #f6f8fc; color: #1a237e;}
-    header { background: linear-gradient(to right, #1565c0, #283593); color: #fff; padding: 10px 0;}
-    nav { display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin: 0 auto; padding: 0 20px;}
-    .logo-container {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      min-width: 0;
-      flex-shrink: 0;
-    }
-    .logo-img-large {
-      height: 70px;
-      width: auto;
-      border-radius: 12px;
-      background: #fff;
-      box-shadow: 0 2px 12px rgba(26,35,126,0.08);
-      object-fit: contain;
-      display: block;
-    }
-    .logo-text {
-      font-size: 1.7rem;
-      font-weight: bold;
-      letter-spacing: 2px;
-      color: #ffd700;
-      font-family: inherit;
-      white-space: nowrap;
-      margin-left: 10px;
-    }
-    nav ul { list-style: none; display: flex; gap: 24px; margin: 0; padding: 0;}
-    nav a { color: #fff; text-decoration: none; font-weight: 500; transition: color 0.2s;}
-    nav a:hover, nav a.active { color: #ffd700;}
-    section { display: none; }
-    section.active { display: block; }
-    .hero { background: linear-gradient(120deg, #1976d2 60%, #fff 100%); color: #fff; text-align: center; padding: 60px 20px 60px 20px; position: relative;}
-    .hero-images {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 36px;
-      flex-wrap: wrap;
-      margin-bottom: 28px;
-    }
-    .hero-img {
-      max-width: 340px;
-      width: 95vw;
-      min-width: 230px;
-      height: 230px;
-      border-radius: 18px;
-      box-shadow: 0 6px 24px rgba(26,35,126,0.14);
-      background: #fff;
-      border: 3px solid #e3f2fd;
-      object-fit: cover;
-      transition: transform 0.2s;
-    }
-    .hero-img:hover {
-      transform: scale(1.04);
-      box-shadow: 0 12px 32px rgba(26,35,126,0.18);
-    }
-    @media (max-width: 900px) {
-      .hero-images {
-        gap: 18px;
-      }
-      .hero-img {
-        max-width: 95vw;
-        width: 95vw;
-        height: 180px;
-        min-width: 140px;
-      }
-    }
-    .hero h1 { font-size: 2.8rem; margin-bottom: 12px; color: #ffd700;}
-    .hero p { font-size: 1.3rem; margin-bottom: 32px; color: #fff;}
-    .cta-button { background: #ffd700; color: #1a237e; padding: 15px 40px; border-radius: 25px; font-weight: bold; text-decoration: none; font-size: 1.1rem; box-shadow: 0 4px 8px rgba(26,35,126,0.1); transition: background 0.2s;}
-    .cta-button:hover { background: #fff; color: #1565c0;}
-    .about-section, .services-section, .contact-section { max-width: 1100px; margin: 60px auto; background: #fff; border-radius: 10px; box-shadow: 0 2px 10px rgba(26,35,126,0.07); padding: 40px 30px; }
-    .about-section h2, .services-section h2, .contact-section h2 { color: #1565c0; font-size: 2rem; margin-bottom: 18px;}
-    .about-section p { font-size: 1.15rem; line-height: 1.7;}
-    .horizontal-cards-container {
-      display: flex;
-      gap: 32px;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      margin: 40px 0 0 0;
-    }
-    .horizontal-card {
-      flex: 1 1 220px;
-      min-width: 220px;
-      max-width: 330px;
-      background: #e3f2fd;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(26,35,126,0.09);
-      padding: 26px 18px 18px 18px;
-      border-left: 7px solid #ffd700;
-      margin-bottom: 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-    }
-    .horizontal-card.values-card {
-      background: #fffde7;
-      border-left: 7px solid #1565c0;
-    }
-    .horizontal-card.board-card {
-      background: #f6f8fc;
-      border-left: 7px solid #283593;
-      min-width: 260px;
-      max-width: 100%;
-      padding-bottom: 10px;
-    }
-    .horizontal-card-title {
-      font-weight: bold;
-      font-size: 1.22rem;
-      color: #1a237e;
-      margin-bottom: 10px;
-      letter-spacing: 1px;
-    }
-    .horizontal-card-content {
-      font-size: 1.08rem;
-      color: #1565c0;
-      margin-bottom: 10px;
-    }
-    .values-list { margin: 0; padding: 0; list-style: none;}
-    .values-list li { margin-bottom: 12px; }
-    .values-label {
-      font-weight: bold;
-      color: #1565c0;
-      font-size: 1.07rem;
-      display: block;
-      margin-bottom: 2px;
-    }
-    .board-row {
-      display: flex;
-      gap: 24px;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      margin-top: 18px;
-    }
-    .board-member-card {
-      background: #fff;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(26,35,126,0.07);
-      border-left: 5px solid #283593;
-      padding: 18px 15px 12px 15px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-width: 180px;
-      max-width: 200px;
-      flex: 1 1 180px;
-      margin-bottom: 0;
-      margin-top: 0;
-      position: relative;
-      min-height: 270px;
-      text-align: center;
-    }
-    .board-member-img {
-      width: 100px;
-      height: 100px;
-      object-fit: cover;
-      border-radius: 50%;
-      box-shadow: 0 2px 12px rgba(26,35,126,0.13);
-      border: 3px solid #ffd700;
-      margin-bottom: 12px;
-      margin-top: 2px;
-      background: #e3f2fd;
-    }
-    .board-name {
-      font-weight: bold;
-      color: #1565c0;
-      font-size: 1.12rem;
-      margin-bottom: 2px;
-      margin-top: 0;
-    }
-    .board-role {
-      font-style: italic;
-      color: #1a237e;
-      margin-bottom: 6px;
-      font-size: 1.04rem;
-      margin-top: 0;
-      display: block;
-    }
-    .board-desc {
-      font-size: 1.01rem;
-      color: #263238;
-      margin-top: 0;
-    }
-    .board-card .horizontal-card-title { margin-bottom: 0; }
-    @media (max-width: 1100px) {
-      .horizontal-cards-container {
-        flex-direction: column;
-        gap: 18px;
-      }
-      .horizontal-card {
-        max-width: 100%;
-      }
-      .board-row { flex-direction: column; gap: 16px;}
-      .board-member-card { max-width: 100%; }
-      .hero-img {
-        max-width: 98vw;
-        width: 98vw;
-        height: 140px;
-        min-width: 80px;
-      }
-    }
-    .services-section { max-width: 1100px; }
-    .services-section h2 { margin-bottom: 30px; }
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-      gap: 30px;
-      margin-top: 10px;
-    }
-    .service-card {
-      background: #e3f2fd;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(26,35,126,0.09);
-      padding: 28px 18px 18px 18px;
-      border-left: 7px solid #ffd700;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      min-height: 260px;
-      position: relative;
-    }
-    .service-card img {
-      width: 100%;
-      max-width: 270px;
-      height: 120px;
-      object-fit: cover;
-      border-radius: 10px;
-      margin-bottom: 12px;
-      box-shadow: 0 2px 8px rgba(26,35,126,0.06);
-    }
-    .service-title {
-      font-size: 1.18rem;
-      font-weight: bold;
-      color: #1565c0;
-      margin-bottom: 7px;
-    }
-    .service-desc {
-      font-size: 1.05rem;
-      color: #263238;
-      margin-bottom: 12px;
-    }
-    .service-features { font-size: 1.02rem; margin-bottom: 12px; color: #1a237e;}
-    .service-features li { margin-bottom: 3px; }
-    .service-cta {
-      background: #ffd700;
-      color: #1a237e;
-      border-radius: 16px;
-      font-weight: bold;
-      text-align: center;
-      padding: 7px 15px;
-      margin-top: auto;
-      align-self: flex-start;
-      text-decoration: none;
-      transition: background 0.2s;
-    }
-    .service-cta:hover { background: #fff; color: #1565c0; }
-    @media (max-width: 900px) {
-      .services-grid { grid-template-columns: 1fr; }
-      .service-card img { height: 90px; }
-    }
-    .contact-section { max-width: 900px; }
-    .contact-emergency-wrap { display: flex; flex-wrap: wrap; gap: 36px; align-items: flex-start; margin-bottom: 40px;}
-    .contact-info {
-      flex: 1 1 280px;
-      min-width: 250px;
-      background: #e3f2fd;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(26,35,126,0.08);
-      padding: 28px 24px;
-      font-size: 1.13rem;
-      line-height: 1.7;
-      color: #263238;
-    }
-    .contact-info div { margin-bottom: 18px; }
-    .contact-info span { font-size: 1.3rem; margin-right: 8px;}
-    .emergency-info {
-      flex: 1 1 280px;
-      min-width: 250px;
-      background: #fff3e0;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(198,40,40,0.08);
-      padding: 28px 24px;
-      font-size: 1.13rem;
-      line-height: 1.7;
-      color: #263238;
-    }
-    .emergency-info h3 {
-      margin-bottom: 18px;
-      color: #c62828;
-      letter-spacing: 1px;
-    }
-    .emergency-info div {
-      margin-bottom: 12px;
-    }
-    .emergency-info strong {
-      margin-right: 4px;
-    }
-    .emergency-info .emergency-note {
-      font-size: 1.04rem;
-      margin-top: 10px;
-      color: #d84315;
-    }
-    .contact-form label { display: block; margin-bottom: 7px; font-weight: 500;}
-    .contact-form input, .contact-form textarea { width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #b0bec5; border-radius: 5px; font-size: 1rem;}
-    .contact-form button { background: #ffd700; color: #1a237e; border: none; padding: 12px 30px; font-size: 1.1rem; border-radius: 25px; font-weight: bold; cursor: pointer;}
-    .contact-form button:hover { background: #1565c0; color: #fff;}
-    footer { background: #283593; color: #ffd700; text-align: center; padding: 18px 0; margin-top: 40px; font-size: 1rem; letter-spacing: 1px;}
-    @media (max-width: 900px) {
-      .contact-emergency-wrap {
-        flex-direction: column;
-        gap: 18px !important;
-      }
-      .contact-info, .emergency-info {
-        min-width: unset !important;
-        padding: 18px 12px !important;
-      }
-    }
-    body {
-    margin: 0;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .footer {
-    text-align: center;
-    padding: 10px;
-    background: #001f3f; /* dark blue */
-    color: white;
-    font-family: Arial, sans-serif;
-    margin-top: auto;
-    position: sticky;
-    bottom: 0;
-    width: 100%;
-  }
-
-  #clock {
-    color: gold;
-    font-weight: bold;
-    font-size: 1.2em;
-  }
-
-  .clock-icon {
-    color: gold;
-    font-size: 1.2em;
-    margin-right: 5px;
-  }
-
-  /* Tablet */
-  @media (max-width: 768px) {
-    #clock, .clock-icon {
-      font-size: 1em;
-    }
-  }
-
-  /* Mobile */
-  @media (max-width: 480px) {
-    #clock, .clock-icon {
-      font-size: 0.9em;
-    }
-  }
-  </style>
-</head>
-<body>
-  <header>
-    <nav>
-      <div class="logo-container">
-        <img src="Bold Emblem Logo for Sagittarius Security (1).png" alt="Sagittarius Security Logo" class="logo-img-large">
-        <span class="logo-text">Sagittarius Security Services</span>
-      </div>
-      <ul>
-        <li><a href="#" class="active" data-section="home">Home</a></li>
-        <li><a href="#" data-section="about">About</a></li>
-        <li><a href="#" data-section="services">Services</a></li>
-        <li><a href="#" data-section="contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <section class="hero active" id="home">
-    <div class="hero-images">
-      <img src="security.png" alt="Security" class="hero-img">
-      <img src="cctv.png" alt="CCTV" class="hero-img">
-      <img src="Access control.png" alt="Access Control" class="hero-img">
-    </div>
-    <h1>Protecting What Matters Most</h1>
-    <p>Your trusted partner in security solutions.</p>
-    <a href="#" class="cta-button" data-section="contact">Get in Touch</a>
-  </section>
-
-  <section class="about-section" id="about">
-    <h2>About Us</h2>
-    <p>
-      Sagittarius Security Services has been a leader in safeguarding businesses and communities for over a decade. Our commitment to integrity, professionalism, and innovation sets us apart.<br><br>
-      We offer tailored security solutions backed by a highly trained team and cutting-edge technology. Whether you need on-site personnel or advanced surveillance, our experts will ensure your peace of mind.
-    </p>
-    <div class="horizontal-cards-container">
-      <div class="horizontal-card">
-        <div class="horizontal-card-title">Our Mission</div>
-        <div class="horizontal-card-content">
-          To provide comprehensive, reliable, and innovative security solutions that protect our clients' assets, people, and peace of mind through professional excellence and cutting-edge technology.
-        </div>
-      </div>
-      <div class="horizontal-card">
-        <div class="horizontal-card-title">Our Vision</div>
-        <div class="horizontal-card-content">
-          To be the leading security services provider in Ghana and West Africa, recognized for our integrity, professionalism, and commitment to delivering safety and security excellence.
-        </div>
-      </div>
-      <div class="horizontal-card values-card">
-        <div class="horizontal-card-title">Our Values</div>
-        <ul class="values-list">
-          <li>
-            <span class="values-label">Integrity</span>
-            We operate with the highest ethical standards and transparency in all our dealings.
-          </li>
-          <li>
-            <span class="values-label">Excellence</span>
-            We strive for perfection in every service we deliver, exceeding client expectations.
-          </li>
-          <li>
-            <span class="values-label">Reliability</span>
-            Our clients can count on us to be there when they need us most, 24/7.
-          </li>
-        </ul>
-      </div>
-      <div class="horizontal-card board-card">
-        <div class="horizontal-card-title">Board of Directors</div>
-        <div class="board-row">
-          <div class="board-member-card">
-            <img src="David.png" alt="David Kwame Blessings" class="board-member-img">
-            <span class="board-name">David Kwame Blessings</span>
-            <span class="board-role">Chairman &amp; CEO</span>
-            <span class="board-desc">Over 20 years of experience in security management and corporate leadership. Expert in strategic planning and business development.</span>
-          </div>
-          <div class="board-member-card">
-            <img src="Carol.png" alt="Carol Kalevor" class="board-member-img">
-            <span class="board-name">Carol Kalevor</span>
-            <span class="board-role">Health and Safety Director</span>
-            <span class="board-desc">Certified safety professional ensuring workplace health standards and emergency preparedness. Oversees safety protocols and risk mitigation strategies.</span>
-          </div>
-          <div class="board-member-card">
-            <img src="Ernest.png" alt="Ernest Adu" class="board-member-img">
-            <span class="board-name">Ernest Adu</span>
-            <span class="board-role">Operations Director</span>
-            <span class="board-desc">Expert in security operations with extensive background in risk management and operational excellence across multiple industries.</span>
-          </div>
-          <div class="board-member-card">
-            <img src="Jibreel.png" alt="Jibreel Shamsudeen" class="board-member-img">
-            <span class="board-name">Jibreel Shamsudeen</span>
-            <span class="board-role">Technology Director</span>
-            <span class="board-desc">Leading our technological innovations in security systems and surveillance. Specialist in advanced security technology integration.</span>
-          </div>
-          <div class="board-member-card">
-            <img src="Evelyn.png" alt="Evelyn Awash" class="board-member-img">
-            <span class="board-name">Evelyn Awash</span>
-            <span class="board-role">Secretary</span>
-            <span class="board-desc">Experienced administrative professional managing corporate governance and board communications. Ensures efficient operations and regulatory compliance.</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="services-section" id="services">
-    <h2>Our Services</h2>
-    <div class="services-grid">
-      <div class="service-card">
-        <img src="bodyguard.jpg" alt="Personal Protection">
-        <div class="service-title">Personal Protection</div>
-        <div class="service-desc">Professional bodyguard services for executives, celebrities, and high-profile individuals.</div>
-        <ul class="service-features">
-          <li>Executive protection</li>
-          <li>Event security</li>
-          <li>Travel security</li>
-        </ul>
-        <a href="#" class="service-cta">Get Quote</a>
-      </div>
-      <div class="service-card">
-        <img src="corporate-building.jpg" alt="Corporate Security">
-        <div class="service-title">Corporate Security</div>
-        <div class="service-desc">Comprehensive security solutions for businesses and corporate facilities.</div>
-        <ul class="service-features">
-          <li>Access control systems</li>
-          <li>Security assessments</li>
-          <li>Employee screening</li>
-        </ul>
-        <a href="#" class="service-cta">Get Quote</a>
-      </div>
-      <div class="service-card">
-        <img src="surveillance-camera.jpg" alt="Surveillance Systems">
-        <div class="service-title">Surveillance Systems</div>
-        <div class="service-desc">Advanced CCTV and monitoring solutions for complete property protection.</div>
-        <ul class="service-features">
-          <li>24/7 monitoring</li>
-          <li>HD camera systems</li>
-          <li>Remote access</li>
-        </ul>
-        <a href="#" class="service-cta">Get Quote</a>
-      </div>
-      <div class="service-card">
-        <img src="alarm-monitoring.jpg" alt="Alarm Systems">
-        <div class="service-title">Alarm Systems</div>
-        <div class="service-desc">State-of-the-art alarm systems with instant response capabilities.</div>
-        <ul class="service-features">
-          <li>Intrusion detection</li>
-          <li>Fire alarm systems</li>
-          <li>Emergency response</li>
-        </ul>
-      </div>
-      <div class="service-card">
-        <img src="home-security.jpg" alt="Residential Security">
-        <div class="service-title">Residential Security</div>
-        <div class="service-desc">Complete home security solutions for peace of mind.</div>
-        <ul class="service-features">
-          <li>Home automation</li>
-          <li>Security patrols</li>
-          <li>Smart locks</li>
-        </ul>
-      </div>
-      <div class="service-card">
-        <img src="cctv-installation.jpg" alt="CCTV Camera Installation">
-        <div class="service-title">CCTV Camera Installation</div>
-        <div class="service-desc">Professional installation of high-definition security cameras for comprehensive coverage.</div>
-        <ul class="service-features">
-          <li>HD & 4K camera systems</li>
-          <li>Professional installation</li>
-          <li>Network configuration</li>
-        </ul>
-      </div>
-      <div class="service-card">
-        <img src="risk-assessment.jpg" alt="Risk Assessment">
-        <div class="service-title">Risk Assessment</div>
-        <div class="service-desc">Professional security audits and risk management consulting.</div>
-        <ul class="service-features">
-          <li>Vulnerability analysis</li>
-          <li>Security planning</li>
-          <li>Threat assessment</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section class="contact-section" id="contact">
-    <h2>Contact Information & Emergency Contacts</h2>
-    <div class="contact-emergency-wrap">
-      <!-- Contact Info -->
-      <div class="contact-info">
-        <div>
-          <span>📞</span>
-          <strong>Phone</strong><br>
-          +233 55 715 0062<br>
-          +233 20 781 6778
-        </div>
-        <div>
-          <span>✉️</span>
-          <strong>Email</strong><br>
-          info@sagittariussecurity.org
-        </div>
-        <div>
-          <span>📍</span>
-          <strong>Address</strong><br>
-          30th St. John's Street, Achimota Accra - Ghana
-        </div>
-        <div>
-          <span>🕒</span>
-          <strong>Hours</strong><br>
-          24/7 Emergency Response
-        </div>
-      </div>
-      <!-- Emergency Info -->
-      <div class="emergency-info">
-        <h3>🚨 Emergency Services</h3>
-        <div><span style="font-size:1.2rem;">👮</span> <strong>Ghana Police:</strong> <span style="color:#1a237e; font-weight:bold;">191</span></div>
-        <div><span style="font-size:1.2rem;">🚒</span> <strong>Fire Service:</strong> <span style="color:#1a237e; font-weight:bold;">192</span></div>
-        <div><span style="font-size:1.2rem;">🚑</span> <strong>Ambulance:</strong> <span style="color:#1a237e; font-weight:bold;">112</span></div>
-        <div class="emergency-note">For immediate emergencies, call the appropriate service above.</div>
-      </div>
-    </div>
-    <p style="margin-bottom:18px;">Fill out the form below to send us a direct mail:</p>
-    <form id="contact-form" class="contact-form" onsubmit="return sendMail();">
-      <label for="name">Your Name</label>
-      <input type="text" id="name" name="name" required>
-      <label for="email">Your Email</label>
-      <input type="email" id="email" name="email" required>
-      <label for="message">Message</label>
-      <textarea id="message" name="message" rows="5" required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
-    <script>
-      function sendMail() {
-        var name = document.getElementById('name').value;
-        var email = document.getElementById('email').value;
-        var message = document.getElementById('message').value;
-        var mailto = "mailto:info@sagittariussecurity.org"
-          + "?subject=" + encodeURIComponent("Contact from " + name)
-          + "&body=" + encodeURIComponent("Name: " + name + "\nEmail: " + email + "\n\nMessage:\n" + message);
-        window.location.href = mailto;
-        return false;
-      }
-    </script>
-  </section>
-
-  <footer class="footer">
-  &copy; 2025 Sagittarius Security Services. All rights reserved. 
-  <br>
-  <span class="clock-icon">🕒</span> <span id="clock"></span>
-</footer>
-
-  <script>
-    function updateClock() {
-    const now = new Date();
-
-    const options = {
-      weekday: 'long', year: 'numeric', month: 'long', day: 'numeric',
-      hour: 'numeric', minute: 'numeric', second: 'numeric',
-      hour12: true,
-      timeZone: 'Africa/Accra',
-      timeZoneName: 'short'
-    };
-
-    const dateTimeString = new Intl.DateTimeFormat(undefined, options).format(now);
-    document.getElementById("clock").textContent = dateTimeString;
-  }
-
-  updateClock();
-  setInterval(updateClock, 1000);
-
-    function showSection(sectionId) {
-      document.querySelectorAll('section').forEach(sec => {
-        sec.classList.remove('active');
-      });
-      document.getElementById(sectionId).classList.add('active');
-      document.querySelectorAll('nav a').forEach(a => {
-        a.classList.remove('active');
-        if (a.getAttribute('data-section') === sectionId) {
-          a.classList.add('active');
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sagittarius Security Services - Professional Security Solutions</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="./Bold Emblem Logo for Sagittarius Security (1).png">
+    <link rel="apple-touch-icon" href="./Bold Emblem Logo for Sagittarius Security (1).png">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .hero-gradient { background: linear-gradient(135deg, #1e3a8a 0%, #3730a3 100%); }
+        .service-card:hover { transform: translateY(-5px); transition: all 0.3s ease; }
+        .nav-link:hover { color: #3b82f6; transition: color 0.3s ease; }
+        
+        /* Automatic Scrolling Animations */
+        @keyframes scroll-left {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
         }
-      });
-    }
-    document.querySelectorAll('nav a, .cta-button').forEach(el => {
-      el.addEventListener('click', function(e) {
-        e.preventDefault();
-        const section = el.getAttribute('data-section');
-        if (section) showSection(section);
-      });
-    });
-  </script>
-</body>
+        
+        @keyframes scroll-right {
+            0% { transform: translateX(-50%); }
+            100% { transform: translateX(0); }
+        }
+        
+        .animate-scroll-left {
+            animation: scroll-left 30s linear infinite;
+        }
+        
+        .animate-scroll-right {
+            animation: scroll-right 30s linear infinite;
+        }
+        
+        /* Pause animation on hover */
+        .animate-scroll-left:hover,
+        .animate-scroll-right:hover {
+            animation-play-state: paused;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed w-full top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <img src="./Bold Emblem Logo for Sagittarius Security (1).png" 
+                         alt="Sagittarius Security Logo" 
+                         class="h-20 w-20 mr-3 object-contain"
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div class="text-4xl font-bold text-blue-800 mr-3 hidden">🏹</div>
+                    <div>
+                        <div class="text-2xl font-bold text-blue-800">Sagittarius Security</div>
+                        <div class="text-xs text-gray-600 italic">Integrity, Excellence and Reliability</div>
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <div class="text-center">
+                        <div id="current-time" class="font-semibold text-blue-800"></div>
+                         <div class="text-xs text-gray-800 italic">Ghana Time GMT</div>
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#home" class="nav-link text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium">Home</a>
+                        <button onclick="openServicesModal()" class="nav-link text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium">Services</button>
+
+                        <button onclick="openAboutModal()" class="nav-link text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium">About Us</button>
+                        <button onclick="openContactModal()" class="nav-link text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium">Contact</button>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-700 hover:text-blue-600">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white border-t">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="#home" class="block px-3 py-2 text-gray-700 hover:text-blue-600">Home</a>
+                <button onclick="openServicesModal()" class="block px-3 py-2 text-gray-700 hover:text-blue-600 w-full text-left">Services</button>
+
+                <button onclick="openAboutModal()" class="block px-3 py-2 text-gray-700 hover:text-blue-600 w-full text-left">About Us</button>
+                <button onclick="openContactModal()" class="block px-3 py-2 text-gray-700 hover:text-blue-600 w-full text-left">Contact</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+      
+    <section id="home" class="hero-gradient text-white pt-20">
+        <div class="max-w-7x7 mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="text-center lg:text-left">
+                  <h1 class="text-4xl md:text-6xl font-bold mb-6">Professional Security Solutions</h1> 
+                    <p class="text-xl md:text-2xl mb-8 text-blue-100">Protecting what matters most with precision and reliability</p>
+                    <div class="space-x-4">
+                        <button onclick="openServicesModal()" class="bg-white text-blue-800 hover:bg-gray-100 px-8 py-3 rounded-lg font-semibold text-lg transition duration-300">Our Services</button>
+                        <button onclick="openContactModal()" class="border-2 border-white text-white hover:bg-white hover:text-blue-800 px-8 py-3 rounded-lg font-semibold text-lg transition duration-300">Contact Us</button>
+                    </div>
+                </div>
+                <div class="flex justify-center">
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-6xl">
+                        <!-- CCTV Installation Card -->
+                        <div class="bg-white p-6 rounded-xl shadow-2xl">
+                            <div class="mb-4">
+                                <img src="./cctv.PNG" height="400" width="400"
+                                     alt="Professional CCTV camera installation by Sagittarius Security" 
+                                     class="w-full h-48 object-cover rounded-lg shadow-lg"
+                                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                <div class="w-full h-48 bg-gradient-to-br from-blue-600 to-purple-700 rounded-lg flex items-center justify-center text-white text-5xl hidden">📹</div>
+                            </div>
+                            <div class="text-center">
+                                <h4 class="text-lg font-bold text-gray-900 mb-2">CCTV Installation</h4>
+                                <p class="text-gray-600 text-sm">Professional camera systems for complete security coverage</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Security Services Card -->
+                        <div class="bg-white p-6 rounded-xl shadow-2xl">
+                            <div class="mb-4">
+                                <img src="./security.PNG" 
+                                     alt="Professional security services by Sagittarius Security" 
+                                     class="w-full h-48 object-cover rounded-lg shadow-lg"
+                                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                <div class="w-full h-48 bg-gradient-to-br from-green-600 to-teal-700 rounded-lg flex items-center justify-center text-white text-5xl hidden">🛡️</div>
+                            </div>
+                            <div class="text-center">
+                                <h4 class="text-lg font-bold text-gray-900 mb-2">Security Services</h4>
+                                <p class="text-gray-600 text-sm">Comprehensive protection solutions for all your needs</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Access Control System Card -->
+                        <div class="bg-white p-6 rounded-xl shadow-2xl">
+                            <div class="mb-4">
+                                <img src="./Access control.PNG"
+                                     alt="Professional access control system by Sagittarius Security" 
+                                     class="w-full h-48 object-cover rounded-lg shadow-lg"
+                                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                <div class="w-full h-48 bg-gradient-to-br from-orange-600 to-red-700 rounded-lg flex items-center justify-center text-white text-5xl hidden">🔐</div>
+                            </div>
+                            <div class="text-center">
+                                <h4 class="text-lg font-bold text-gray-900 mb-2">Access Control System</h4>
+                                <p class="text-gray-600 text-sm">Advanced entry management and security authentication</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Company Branding Section -->
+                <div class="flex justify-center mt-8">
+                    <div class="bg-white p-6 rounded-xl shadow-lg max-w-md">
+                        <div class="text-center">
+                            <div class="mb-4 flex justify-center">
+                                <img src="./Bold Emblem Logo for Sagittarius Security (1).png" 
+                                     alt="Sagittarius Security Logo" 
+                                     class="h-16 w-16 object-contain"
+                                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                <div class="text-4xl hidden">🏹</div>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-900 mb-2">Sagittarius Security</h3>
+                            <p class="text-gray-600">Integrity, Excellence and Reliability</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Automatic Scrolling Security Gallery -->
+    <section class="py-16 bg-gradient-to-r from-blue-900 to-purple-900 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+            <div class="text-center">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Our Security in Action</h2>
+                <p class="text-xl text-blue-100">Professional security services captured in real-time</p>
+            </div>
+        </div>
+        
+        <!-- Scrolling Gallery Container -->
+        <div class="relative">
+            <!-- First Row - Left to Right -->
+            <div class="flex animate-scroll-left mb-8">
+                <div class="flex space-x-6 min-w-max">
+                    <div class="relative group">
+                        <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             alt="Professional security team in action" 
+                             class="w-80 h-48 object-cover rounded-xl shadow-lg group-hover:scale-105 transition-transform duration-300"
+                             onerror="this.src=''; this.alt='Security image failed to load'; this.style.display='none';">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 rounded-xl flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <span class="text-white font-semibold text-lg">Professional Security Team</span>
+                        </div>
+                    </div>
+                    
+                    <div class="relative group">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             alt="Executive protection bodyguard" 
+                             class="w-80 h-48 object-cover rounded-xl shadow-lg group-hover:scale-105 transition-transform duration-300"
+                             onerror="this.src=''; this.alt='Bodyguard image failed to load'; this.style.display='none';">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 rounded-xl flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <span class="text-white font-semibold text-lg">Executive Protection</span>
+                        </div>
+                    </div>
+                    
+                    <div class="relative group">
+                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             alt="Advanced surveillance camera system" 
+                             class="w-80 h-48 object-cover rounded-xl shadow-lg group-hover:scale-105 transition-transform duration-300"
+                             onerror="this.src=''; this.alt='Surveillance image failed to load'; this.style.display='none';">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 rounded-xl flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <span class="text-white font-semibold text-lg">CCTV Surveillance</span>
+                        </div>
+                    </div>
+                    
+                    <div class="relative group">
+                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             alt="Corporate building security" 
+                             class="w-80 h-48 object-cover rounded-xl shadow-lg group-hover:scale-105 transition-transform duration-300"
+                             onerror="this.src=''; this.alt='Corporate security image failed to load'; this.style.display='none';">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 rounded-xl flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <span class="text-white font-semibold text-lg">Corporate Security</span>
+                        </div>
+                    </div>
+                    
+                    <div class="relative group">
+                        <img src="https://images.unsplash.com/photo-1551808525-51a94da548ce?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             alt="Security control room monitoring" 
+                             class="w-80 h-48 object-cover rounded-xl shadow-lg group-hover:scale-105 transition-transform duration-300"
+                             onerror="this.src=''; this.alt='Control room image failed to load'; this.style.display='none';">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 rounded-xl flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <span class="text-white font-semibold text-lg">24/7 Monitoring</span>
+                        </div>
+                    </div>
+                    
+                    <div class="relative group">
+                        <img src="https://images.unsplash.com/photo-1556075798-4825dfaaf498?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             alt="Security alarm system control panel" 
+                             class="w-80 h-48 object-cover rounded-xl shadow-lg group-hover:scale-105 transition-transform duration-300"
+                             onerror="this.src=''; this.alt='Alarm system image failed to load'; this.style.display='none';">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 rounded-xl flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <span class="text-white font-semibold text-lg">Alarm Systems</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Duplicate images for seamless loop -->
+                    <div class="relative group">
+                        <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             alt="Professional security team in action" 
+                             class="w-80 h-48 object-cover rounded-xl shadow-lg group-hover:scale-105 transition-transform duration-300"
+                             onerror="this.src=''; this.alt='Security image failed to load'; this.style.display='none';">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 rounded-xl flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <span class="text-white font-semibold text-lg">Professional Security Team</span>
+                        </div>
+                    </div>
+                    
+                    <div class="relative group">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             alt="Executive protection bodyguard" 
+                             class="w-80 h-48 object-cover rounded-xl shadow-lg group-hover:scale-105 transition-transform duration-300"
+                             onerror="this.src=''; this.alt='Bodyguard image failed to load'; this.style.display='none';">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 rounded-xl flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <span class="text-white font-semibold text-lg">Executive Protection</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Second Row - Right to Left -->
+            <div class="flex animate-scroll-right">
+                <div class="flex space-x-6 min-w-max">
+                    <div class="relative group">
+                        <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             alt="Modern home security system" 
+                             class="w-80 h-48 object-cover rounded-xl shadow-lg group-hover:scale-105 transition-transform duration-300"
+                             onerror="this.src=''; this.alt='Home security image failed to load'; this.style.display='none';">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 rounded-xl flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <span class="text-white font-semibold text-lg">Residential Security</span>
+                        </div>
+                    </div>
+                    
+                    <div class="relative group">
+                        <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             alt="Security professional conducting assessment" 
+                             class="w-80 h-48 object-cover rounded-xl shadow-lg group-hover:scale-105 transition-transform duration-300"
+                             onerror="this.src=''; this.alt='Risk assessment image failed to load'; this.style.display='none';">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 rounded-xl flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <span class="text-white font-semibold text-lg">Risk Assessment</span>
+                        </div>
+                    </div>
+                    
+                    <div class="relative group">
+                        <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             alt="Professional security team members" 
+                             class="w-80 h-48 object-cover rounded-xl shadow-lg group-hover:scale-105 transition-transform duration-300"
+                             onerror="this.src=''; this.alt='Security team image failed to load'; this.style.display='none';">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 rounded-xl flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <span class="text-white font-semibold text-lg">Expert Team</span>
+                        </div>
+                    </div>
+                    
+                    <div class="relative group">
+                        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             alt="Security technology and equipment" 
+                             class="w-80 h-48 object-cover rounded-xl shadow-lg group-hover:scale-105 transition-transform duration-300"
+                             onerror="this.src=''; this.alt='Security technology image failed to load'; this.style.display='none';">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 rounded-xl flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <span class="text-white font-semibold text-lg">Advanced Technology</span>
+                        </div>
+                    </div>
+                    
+                    <div class="relative group">
+                        <img src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             alt="Security guard on patrol" 
+                             class="w-80 h-48 object-cover rounded-xl shadow-lg group-hover:scale-105 transition-transform duration-300"
+                             onerror="this.src=''; this.alt='Security patrol image failed to load'; this.style.display='none';">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 rounded-xl flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <span class="text-white font-semibold text-lg">Security Patrols</span>
+                        </div>
+                    </div>
+                    
+                    <div class="relative group">
+                        <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             alt="Event security management" 
+                             class="w-80 h-48 object-cover rounded-xl shadow-lg group-hover:scale-105 transition-transform duration-300"
+                             onerror="this.src=''; this.alt='Event security image failed to load'; this.style.display='none';">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 rounded-xl flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <span class="text-white font-semibold text-lg">Event Security</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Duplicate images for seamless loop -->
+                    <div class="relative group">
+                        <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             alt="Modern home security system" 
+                             class="w-80 h-48 object-cover rounded-xl shadow-lg group-hover:scale-105 transition-transform duration-300"
+                             onerror="this.src=''; this.alt='Home security image failed to load'; this.style.display='none';">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 rounded-xl flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <span class="text-white font-semibold text-lg">Residential Security</span>
+                        </div>
+                    </div>
+                    
+                    <div class="relative group">
+                        <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             alt="Security professional conducting assessment" 
+                             class="w-80 h-48 object-cover rounded-xl shadow-lg group-hover:scale-105 transition-transform duration-300"
+                             onerror="this.src=''; this.alt='Risk assessment image failed to load'; this.style.display='none';">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 rounded-xl flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <span class="text-white font-semibold text-lg">Risk Assessment</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Security Services</h2>
+                <p class="text-xl text-gray-600">Comprehensive security solutions tailored to your needs</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="service-card bg-gray-50 p-8 rounded-xl shadow-lg">
+                    <div class="mb-4">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" 
+                             alt="Professional bodyguard in suit providing personal protection" 
+                             class="w-full h-32 object-cover rounded-lg"
+                             onerror="this.src=''; this.alt='Personal protection image failed to load'; this.style.display='none';">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4 text-gray-900">Personal Protection</h3>
+                    <p class="text-gray-600 mb-6">Professional bodyguard services for executives, celebrities, and high-profile individuals.</p>
+                    <ul class="text-sm text-gray-600 space-y-2">
+                        <li>• Executive protection</li>
+                        <li>• Event security</li>
+                        <li>• Travel security</li>
+                    </ul>
+                </div>
+                <div class="service-card bg-gray-50 p-8 rounded-xl shadow-lg">
+                    <div class="mb-4">
+                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" 
+                             alt="Modern corporate building with security" 
+                             class="w-full h-32 object-cover rounded-lg"
+                             onerror="this.src=''; this.alt='Corporate security image failed to load'; this.style.display='none';">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4 text-gray-900">Corporate Security</h3>
+                    <p class="text-gray-600 mb-6">Comprehensive security solutions for businesses and corporate facilities.</p>
+                    <ul class="text-sm text-gray-600 space-y-2">
+                        <li>• Access control systems</li>
+                        <li>• Security assessments</li>
+                        <li>• Employee screening</li>
+                    </ul>
+                </div>
+                <div class="service-card bg-gray-50 p-8 rounded-xl shadow-lg">
+                    <div class="mb-4">
+                        <img src="./cctv.PNG" 
+                             alt="Professional CCTV camera installation on building" 
+                             class="w-full h-32 object-cover rounded-lg"
+                             onerror="this.src=''; this.alt='CCTV installation image failed to load'; this.style.display='none';">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4 text-gray-900">CCTV Camera Installation</h3>
+                    <p class="text-gray-600 mb-6">Professional installation of high-definition security cameras for comprehensive coverage.</p>
+                    <ul class="text-sm text-gray-600 space-y-2">
+                        <li>• HD & 4K camera systems</li>
+                        <li>• Professional installation</li>
+                        <li>• Network configuration</li>
+                    </ul>
+                </div>
+                <div class="service-card bg-gray-50 p-8 rounded-xl shadow-lg">
+                    <div class="mb-4">
+                        <img src="https://images.unsplash.com/photo-1556075798-4825dfaaf498?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" 
+                             alt="Security guard monitoring alarm systems and control panel" 
+                             class="w-full h-32 object-cover rounded-lg"
+                             onerror="this.src=''; this.alt='Alarm systems image failed to load'; this.style.display='none';">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4 text-gray-900">Alarm Systems</h3>
+                    <p class="text-gray-600 mb-6">State-of-the-art alarm systems with instant response capabilities.</p>
+                    <ul class="text-sm text-gray-600 space-y-2">
+                        <li>• Intrusion detection</li>
+                        <li>• Fire alarm systems</li>
+                        <li>• Emergency response</li>
+                    </ul>
+                </div>
+                <div class="service-card bg-gray-50 p-8 rounded-xl shadow-lg">
+                    <div class="mb-4">
+                        <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" 
+                             alt="Modern home with security system" 
+                             class="w-full h-32 object-cover rounded-lg"
+                             onerror="this.src=''; this.alt='Home security image failed to load'; this.style.display='none';">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4 text-gray-900">Residential Security</h3>
+                    <p class="text-gray-600 mb-6">Complete home security solutions for peace of mind.</p>
+                    <ul class="text-sm text-gray-600 space-y-2">
+                        <li>• Home automation</li>
+                        <li>• Security patrols</li>
+                        <li>• Smart locks</li>
+                    </ul>
+                </div>
+                <div class="service-card bg-gray-50 p-8 rounded-xl shadow-lg">
+                    <div class="mb-4">
+                        <img src="./cctv.PNG" 
+                             alt="Professional CCTV camera installation on building" 
+                             class="w-full h-32 object-cover rounded-lg"
+                             onerror="this.src=''; this.alt='CCTV installation image failed to load'; this.style.display='none';">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4 text-gray-900">CCTV Camera Installation</h3>
+                    <p class="text-gray-600 mb-6">Professional installation of high-definition security cameras for comprehensive coverage.</p>
+                    <ul class="text-sm text-gray-600 space-y-2">
+                        <li>• HD & 4K camera systems</li>
+                        <li>• Professional installation</li>
+                        <li>• Network configuration</li>
+                    </ul>
+                </div>
+                <div class="service-card bg-gray-50 p-8 rounded-xl shadow-lg">
+                    <div class="mb-4">
+                        <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" 
+                             alt="Security professional conducting risk assessment with clipboard" 
+                             class="w-full h-32 object-cover rounded-lg"
+                             onerror="this.src=''; this.alt='Risk assessment image failed to load'; this.style.display='none';">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4 text-gray-900">Risk Assessment</h3>
+                    <p class="text-gray-600 mb-6">Professional security audits and risk management consulting.</p>
+                    <ul class="text-sm text-gray-600 space-y-2">
+                        <li>• Vulnerability analysis</li>
+                        <li>• Security planning</li>
+                        <li>• Threat assessment</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Why Choose Sagittarius Security?</h2>
+                    <p class="text-lg text-gray-600 mb-8">With over 15 years of experience in the security industry, we provide unmatched protection services with precision and reliability. Our team of certified professionals is dedicated to safeguarding what matters most to you.</p>
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <div class="bg-blue-600 text-white rounded-full p-2 mr-4">✓</div>
+                            <span class="text-gray-700">Licensed and insured professionals</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="bg-blue-600 text-white rounded-full p-2 mr-4">✓</div>
+                            <span class="text-gray-700">24/7 emergency response</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="bg-blue-600 text-white rounded-full p-2 mr-4">✓</div>
+                            <span class="text-gray-700">Advanced technology solutions</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="bg-blue-600 text-white rounded-full p-2 mr-4">✓</div>
+                            <span class="text-gray-700">Customized security plans</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-lg">
+                    <!-- Security Team Photo -->
+                    <div class="mb-8 flex justify-center">
+                        <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" 
+                             alt="Professional security team members" 
+                             class="w-full max-w-sm rounded-lg shadow-lg"
+                             onerror="this.src=''; this.alt='Security team image failed to load'; this.style.display='none';">
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6">Our Stats</h3>
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-blue-600 mb-2">500+</div>
+                            <div class="text-gray-600">Clients Protected</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-blue-600 mb-2">15+</div>
+                            <div class="text-gray-600">Years Experience</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-blue-600 mb-2">24/7</div>
+                            <div class="text-gray-600">Monitoring</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-blue-600 mb-2">99.9%</div>
+                            <div class="text-gray-600">Uptime</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Get In Touch</h2>
+                <p class="text-xl text-gray-600">Ready to secure your future? Contact us for a free consultation</p>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div>
+                    <!-- Security Control Room Photo -->
+                    <div class="mb-8 flex justify-center">
+                        <img src="https://images.unsplash.com/photo-1551808525-51a94da548ce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" 
+                             alt="Security monitoring control room with multiple screens" 
+                             class="w-full max-w-xs rounded-lg shadow-lg"
+                             onerror="this.src=''; this.alt='Control room image failed to load'; this.style.display='none';">
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6">Contact Information</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-center">
+                            <div class="bg-blue-100 text-blue-600 rounded-full p-3 mr-4">📞</div>
+                            <div>
+                                <div class="font-semibold text-gray-900">Phone</div>
+                                <div class="text-gray-600">+233 55 715 0062</div>
+                                <div class="text-gray-600">+233 20 781 6778</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="bg-blue-100 text-blue-600 rounded-full p-3 mr-4">✉️</div>
+                            <div>
+                                <div class="font-semibold text-gray-900">Email</div>
+                                <div class="text-gray-600">info@sagittariussecurity.org</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="bg-blue-100 text-blue-600 rounded-full p-3 mr-4">📍</div>
+                            <div>
+                                <div class="font-semibold text-gray-900">Address</div>
+                                <div class="text-gray-600">30th St. John's Street, Achimota Accra - Ghana</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="bg-blue-100 text-blue-600 rounded-full p-3 mr-4">🕒</div>
+                            <div>
+                                <div class="font-semibold text-gray-900">Hours</div>
+                                <div class="text-gray-600">24/7 Emergency Response</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Emergency Services Section -->
+                    <div class="mt-8 p-6 bg-red-50 border border-red-200 rounded-xl">
+                        <h4 class="text-lg font-bold text-red-800 mb-4 flex items-center">
+                            🚨 Emergency Services
+                        </h4>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                            <div class="text-center p-3 bg-white rounded-lg border border-red-200">
+                                <div class="text-2xl mb-2">👮</div>
+                                <div class="font-semibold text-red-800 text-sm">Ghana Police</div>
+                                <div class="text-red-600 font-bold text-lg">191</div>
+                            </div>
+                            <div class="text-center p-3 bg-white rounded-lg border border-red-200">
+                                <div class="text-2xl mb-2">🚒</div>
+                                <div class="font-semibold text-red-800 text-sm">Fire Service</div>
+                                <div class="text-red-600 font-bold text-lg">192</div>
+                            </div>
+                            <div class="text-center p-3 bg-white rounded-lg border border-red-200">
+                                <div class="text-2xl mb-2">🚑</div>
+                                <div class="font-semibold text-red-800 text-sm">Ambulance</div>
+                                <div class="text-red-600 font-bold text-lg">112</div>
+                            </div>
+                        </div>
+                        <div class="text-xs text-red-600 mt-3 text-center">
+                            For immediate emergencies, call the appropriate service above
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-50 p-8 rounded-xl">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6">Request a Quote</h3>
+                    <div class="bg-green-50 border border-green-200 rounded-lg p-4 mb-6">
+                        <p class="text-green-800 text-sm"><strong>Secure Contact Form:</strong> Your inquiry will be sent directly to info@sagittariussecurity.org. We'll respond within 24 hours.</p>
+                    </div>
+                    
+                    <!-- Contact Form -->
+                    <form id="contact-form" 
+                          class="space-y-4">
+                        
+                        <!-- Form will be processed via JavaScript for better user experience -->
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Full Name *</label>
+                            <input type="text" 
+                                   name="name" 
+                                   required 
+                                   maxlength="255" 
+                                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" 
+                                   placeholder="Your full name">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Email *</label>
+                            <input type="email" 
+                                   name="email" 
+                                   required 
+                                   maxlength="255" 
+                                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" 
+                                   placeholder="your@email.com">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Phone</label>
+                            <input type="tel" 
+                                   name="phone" 
+                                   maxlength="20" 
+                                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" 
+                                   placeholder="+233 55 715 0062">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Service Needed *</label>
+                            <select name="service" 
+                                    required 
+                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                <option value="">Select a service</option>
+                                <option value="Personal Protection">Personal Protection</option>
+                                <option value="Corporate Security">Corporate Security</option>
+                                <option value="Surveillance Systems">Surveillance Systems</option>
+                                <option value="Alarm Systems">Alarm Systems</option>
+                                <option value="Residential Security">Residential Security</option>
+                                <option value="CCTV Camera Installation">CCTV Camera Installation</option>
+                                <option value="Risk Assessment">Risk Assessment</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Message *</label>
+                            <textarea name="message" 
+                                      rows="4" 
+                                      required 
+                                      maxlength="65535" 
+                                      class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" 
+                                      placeholder="Tell us about your security needs..."></textarea>
+                        </div>
+                        
+                        <!-- Company/Organization (Optional) -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Company/Organization</label>
+                            <input type="text" 
+                                   name="company" 
+                                   maxlength="255" 
+                                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" 
+                                   placeholder="Your company name (optional)">
+                        </div>
+                        
+                        <!-- Preferred Contact Method -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Preferred Contact Method</label>
+                            <div class="space-y-2">
+                                <label class="flex items-center">
+                                    <input type="radio" name="contact_method" value="Email" class="mr-2 text-blue-600">
+                                    <span class="text-gray-700">Email</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="radio" name="contact_method" value="Phone" class="mr-2 text-blue-600">
+                                    <span class="text-gray-700">Phone</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="radio" name="contact_method" value="WhatsApp" class="mr-2 text-blue-600">
+                                    <span class="text-gray-700">WhatsApp</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <!-- Urgency Level -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Urgency Level</label>
+                            <select name="urgency" 
+                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                <option value="">Select urgency level</option>
+                                <option value="Low - General Inquiry">Low - General Inquiry</option>
+                                <option value="Medium - Quote Needed">Medium - Quote Needed</option>
+                                <option value="High - Urgent Security Need">High - Urgent Security Need</option>
+                                <option value="Emergency - Immediate Response">Emergency - Immediate Response</option>
+                            </select>
+                        </div>
+                        
+                        <!-- Privacy Consent -->
+                        <div class="flex items-start">
+                            <input type="checkbox" 
+                                   name="privacy_consent" 
+                                   value="I agree to the privacy policy" 
+                                   required 
+                                   class="mt-1 mr-3 text-blue-600">
+                            <label class="text-sm text-gray-700">
+                                I agree to the <a href="#" class="text-blue-600 hover:text-blue-800">privacy policy</a> and consent to Sagittarius Security contacting me about my inquiry. *
+                            </label>
+                        </div>
+                        
+                        <!-- Form Status Messages -->
+                        <div id="form-status" class="hidden p-4 rounded-lg"></div>
+                        
+                        <button type="submit" 
+                                id="submit-btn" 
+                                class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 px-6 rounded-lg font-semibold transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed">
+                            Send Message
+                        </button>
+                        
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Modal -->
+    <div id="services-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4" style="display: none;">
+        <div class="bg-white rounded-xl max-w-6xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-3xl font-bold text-gray-900">Our Security Services</h3>
+                    <button onclick="closeServicesModal()" class="text-gray-400 hover:text-gray-600 text-2xl font-bold">×</button>
+                </div>
+                
+                <p class="text-xl text-gray-600 mb-8 text-center">Comprehensive security solutions tailored to your needs</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="service-card bg-gray-50 p-6 rounded-xl shadow-lg">
+                        <div class="mb-4">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" 
+                                 alt="Professional bodyguard in suit providing personal protection" 
+                                 class="w-full h-24 object-cover rounded-lg"
+                                 onerror="this.src=''; this.alt='Personal protection image failed to load'; this.style.display='none';">
+                        </div>
+                        <h4 class="text-lg font-semibold mb-3 text-gray-900">Personal Protection</h4>
+                        <p class="text-gray-600 mb-4 text-sm">Professional bodyguard services for executives, celebrities, and high-profile individuals.</p>
+                        <ul class="text-xs text-gray-600 space-y-1">
+                            <li>• Executive protection</li>
+                            <li>• Event security</li>
+                            <li>• Travel security</li>
+                        </ul>
+                        <button onclick="openContactModal(); closeServicesModal();" class="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg text-sm font-semibold transition duration-300">Get Quote</button>
+                    </div>
+                    
+                    <div class="service-card bg-gray-50 p-6 rounded-xl shadow-lg">
+                        <div class="mb-4">
+                            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" 
+                                 alt="Modern corporate building with security" 
+                                 class="w-full h-24 object-cover rounded-lg"
+                                 onerror="this.src=''; this.alt='Corporate security image failed to load'; this.style.display='none';">
+                        </div>
+                        <h4 class="text-lg font-semibold mb-3 text-gray-900">Corporate Security</h4>
+                        <p class="text-gray-600 mb-4 text-sm">Comprehensive security solutions for businesses and corporate facilities.</p>
+                        <ul class="text-xs text-gray-600 space-y-1">
+                            <li>• Access control systems</li>
+                            <li>• Security assessments</li>
+                            <li>• Employee screening</li>
+                        </ul>
+                        <button onclick="openContactModal(); closeServicesModal();" class="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg text-sm font-semibold transition duration-300">Get Quote</button>
+                    </div>
+                    
+                    <div class="service-card bg-gray-50 p-6 rounded-xl shadow-lg">
+                        <div class="mb-4">
+                            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" 
+                                 alt="Security surveillance camera system" 
+                                 class="w-full h-24 object-cover rounded-lg"
+                                 onerror="this.src=''; this.alt='Surveillance image failed to load'; this.style.display='none';">
+                        </div>
+                        <h4 class="text-lg font-semibold mb-3 text-gray-900">Surveillance Systems</h4>
+                        <p class="text-gray-600 mb-4 text-sm">Advanced CCTV and monitoring solutions for complete property protection.</p>
+                        <ul class="text-xs text-gray-600 space-y-1">
+                            <li>• 24/7 monitoring</li>
+                            <li>• HD camera systems</li>
+                            <li>• Remote access</li>
+                        </ul>
+                        <button onclick="openContactModal(); closeServicesModal();" class="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg text-sm font-semibold transition duration-300">Get Quote</button>
+                    </div>
+                    
+                    <div class="service-card bg-gray-50 p-6 rounded-xl shadow-lg">
+                        <div class="mb-4">
+                            <img src="https://images.unsplash.com/photo-1556075798-4825dfaaf498?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" 
+                                 alt="Security guard monitoring alarm systems and control panel" 
+                                 class="w-full h-24 object-cover rounded-lg"
+                                 onerror="this.src=''; this.alt='Alarm systems image failed to load'; this.style.display='none';">
+                        </div>
+                        <h4 class="text-lg font-semibold mb-3 text-gray-900">Alarm Systems</h4>
+                        <p class="text-gray-600 mb-4 text-sm">State-of-the-art alarm systems with instant response capabilities.</p>
+                        <ul class="text-xs text-gray-600 space-y-1">
+                            <li>• Intrusion detection</li>
+                            <li>• Fire alarm systems</li>
+                            <li>• Emergency response</li>
+                        </ul>
+                        <button onclick="openContactModal(); closeServicesModal();" class="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg text-sm font-semibold transition duration-300">Get Quote</button>
+                    </div>
+                    
+                    <div class="service-card bg-gray-50 p-6 rounded-xl shadow-lg">
+                        <div class="mb-4">
+                            <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" 
+                                 alt="Modern home with security system" 
+                                 class="w-full h-24 object-cover rounded-lg"
+                                 onerror="this.src=''; this.alt='Home security image failed to load'; this.style.display='none';">
+                        </div>
+                        <h4 class="text-lg font-semibold mb-3 text-gray-900">Residential Security</h4>
+                        <p class="text-gray-600 mb-4 text-sm">Complete home security solutions for peace of mind.</p>
+                        <ul class="text-xs text-gray-600 space-y-1">
+                            <li>• Home automation</li>
+                            <li>• Security patrols</li>
+                            <li>• Smart locks</li>
+                        </ul>
+                        <button onclick="openContactModal(); closeServicesModal();" class="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg text-sm font-semibold transition duration-300">Get Quote</button>
+                    </div>
+                    
+                    <div class="service-card bg-gray-50 p-6 rounded-xl shadow-lg">
+                        <div class="mb-4">
+                            <img src="./cctv.PNG" 
+                                 alt="Professional CCTV camera installation on building" 
+                                 class="w-full h-24 object-cover rounded-lg"
+                                 onerror="this.src=''; this.alt='CCTV installation image failed to load'; this.style.display='none';">
+                        </div>
+                        <h4 class="text-lg font-semibold mb-3 text-gray-900">CCTV Camera Installation</h4>
+                        <p class="text-gray-600 mb-4 text-sm">Professional installation of high-definition security cameras for comprehensive coverage.</p>
+                        <ul class="text-xs text-gray-600 space-y-1">
+                            <li>• HD & 4K camera systems</li>
+                            <li>• Professional installation</li>
+                            <li>• Network configuration</li>
+                        </ul>
+                        <button onclick="openContactModal(); closeServicesModal();" class="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg text-sm font-semibold transition duration-300">Get Quote</button>
+                    </div>
+                    
+                    <div class="service-card bg-gray-50 p-6 rounded-xl shadow-lg md:col-span-2 lg:col-span-1">
+                        <div class="mb-4">
+                            <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" 
+                                 alt="Security professional conducting risk assessment with clipboard" 
+                                 class="w-full h-24 object-cover rounded-lg"
+                                 onerror="this.src=''; this.alt='Risk assessment image failed to load'; this.style.display='none';">
+                        </div>
+                        <h4 class="text-lg font-semibold mb-3 text-gray-900">Risk Assessment</h4>
+                        <p class="text-gray-600 mb-4 text-sm">Professional security audits and risk management consulting.</p>
+                        <ul class="text-xs text-gray-600 space-y-1">
+                            <li>• Vulnerability analysis</li>
+                            <li>• Security planning</li>
+                            <li>• Threat assessment</li>
+                        </ul>
+                        <button onclick="openContactModal(); closeServicesModal();" class="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg text-sm font-semibold transition duration-300">Get Quote</button>
+                    </div>
+                </div>
+                
+                <div class="mt-8 text-center">
+                    <button onclick="closeServicesModal()" class="bg-gray-300 hover:bg-gray-400 text-gray-700 py-3 px-8 rounded-lg font-semibold transition duration-300">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Modal -->
+    <div id="about-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4" style="display: none;">
+        <div class="bg-white rounded-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-3xl font-bold text-gray-900">About Sagittarius Security</h3>
+                    <button onclick="closeAboutModal()" class="text-gray-400 hover:text-gray-600 text-2xl font-bold">×</button>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center mb-8">
+                    <div>
+                        <h4 class="text-2xl font-bold text-gray-900 mb-4">Why Choose Sagittarius Security?</h4>
+                        <p class="text-lg text-gray-600 mb-6">With over 15 years of experience in the security industry, we provide unmatched protection services with precision and reliability. Our team of certified professionals is dedicated to safeguarding what matters most to you.</p>
+                        <div class="space-y-3">
+                            <div class="flex items-center">
+                                <div class="bg-blue-600 text-white rounded-full p-2 mr-4 text-sm">✓</div>
+                                <span class="text-gray-700">Licensed and insured professionals</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="bg-blue-600 text-white rounded-full p-2 mr-4 text-sm">✓</div>
+                                <span class="text-gray-700">24/7 emergency response</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="bg-blue-600 text-white rounded-full p-2 mr-4 text-sm">✓</div>
+                                <span class="text-gray-700">Advanced technology solutions</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="bg-blue-600 text-white rounded-full p-2 mr-4 text-sm">✓</div>
+                                <span class="text-gray-700">Customized security plans</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-xl">
+                        <!-- Security Team Photo -->
+                        <div class="mb-6 flex justify-center">
+                            <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" 
+                                 alt="Professional security team members" 
+                                 class="w-full max-w-sm rounded-lg shadow-lg"
+                                 onerror="this.src=''; this.alt='Security team image failed to load'; this.style.display='none';">
+                        </div>
+                        <h5 class="text-xl font-bold text-gray-900 mb-4 text-center">Our Stats</h5>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="text-center">
+                                <div class="text-2xl font-bold text-blue-600 mb-1">500+</div>
+                                <div class="text-gray-600 text-sm">Clients Protected</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-2xl font-bold text-blue-600 mb-1">15+</div>
+                                <div class="text-gray-600 text-sm">Years Experience</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-2xl font-bold text-blue-600 mb-1">24/7</div>
+                                <div class="text-gray-600 text-sm">Monitoring</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-2xl font-bold text-blue-600 mb-1">99.9%</div>
+                                <div class="text-gray-600 text-sm">Uptime</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Mission & Vision Section -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                    <div class="bg-blue-50 p-6 rounded-xl">
+                        <h5 class="text-xl font-bold text-blue-800 mb-3">🎯 Our Mission</h5>
+                        <p class="text-gray-700">To provide comprehensive, reliable, and innovative security solutions that protect our clients' assets, people, and peace of mind through professional excellence and cutting-edge technology.</p>
+                    </div>
+                    <div class="bg-green-50 p-6 rounded-xl">
+                        <h5 class="text-xl font-bold text-green-800 mb-3">👁️ Our Vision</h5>
+                        <p class="text-gray-700">To be the leading security services provider in Ghana and West Africa, recognized for our integrity, professionalism, and commitment to delivering safety and security excellence.</p>
+                    </div>
+                </div>
+                
+                <!-- Core Values -->
+                <div class="mb-8">
+                    <h5 class="text-2xl font-bold text-gray-900 mb-6 text-center">Our Core Values</h5>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="text-center p-4">
+                            <div class="bg-blue-100 text-blue-600 rounded-full p-4 mx-auto mb-3 w-16 h-16 flex items-center justify-center text-2xl">🛡️</div>
+                            <h6 class="font-semibold text-gray-900 mb-2">Integrity</h6>
+                            <p class="text-gray-600 text-sm">We operate with the highest ethical standards and transparency in all our dealings.</p>
+                        </div>
+                        <div class="text-center p-4">
+                            <div class="bg-green-100 text-green-600 rounded-full p-4 mx-auto mb-3 w-16 h-16 flex items-center justify-center text-2xl">⚡</div>
+                            <h6 class="font-semibold text-gray-900 mb-2">Excellence</h6>
+                            <p class="text-gray-600 text-sm">We strive for perfection in every service we deliver, exceeding client expectations.</p>
+                        </div>
+                        <div class="text-center p-4">
+                            <div class="bg-purple-100 text-purple-600 rounded-full p-4 mx-auto mb-3 w-16 h-16 flex items-center justify-center text-2xl">🤝</div>
+                            <h6 class="font-semibold text-gray-900 mb-2">Reliability</h6>
+                            <p class="text-gray-600 text-sm">Our clients can count on us to be there when they need us most, 24/7.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Board of Directors -->
+                <div class="mb-8">
+                    <h5 class="text-2xl font-bold text-gray-900 mb-6 text-center">Board of Directors</h5>
+                    
+                    <!-- Directors Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="bg-white p-6 rounded-xl shadow-lg border text-center">
+                            <div class="mb-4">
+                                <img src="./David.jpeg" 
+                                     alt="David Kwame Blessings - Chairman & CEO" 
+                                     class="w-24 h-24 rounded-full mx-auto object-cover border-4 border-blue-200"
+                                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                <div class="w-24 h-24 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full mx-auto flex items-center justify-center text-2xl text-white font-bold border-4 border-blue-200" style="display: none;">
+                                    DKB
+                                </div>
+                            </div>
+                            <h6 class="text-lg font-semibold text-gray-900 mb-1">David Kwame Blessings</h6>
+                            <p class="text-blue-600 font-medium mb-3">Chairman & CEO</p>
+                            <p class="text-gray-600 text-sm">Over 20 years of experience in security management and corporate leadership. Expert in strategic planning and business development.</p>
+                        </div>
+                        
+                        <div class="bg-white p-6 rounded-xl shadow-lg border text-center">
+                            <div class="mb-4">
+                                <div class="w-24 h-24 bg-gradient-to-br from-teal-500 to-teal-600 rounded-full mx-auto flex items-center justify-center text-3xl text-white font-bold">
+                                    CK
+                                </div>
+                            </div>
+                            <h6 class="text-lg font-semibold text-gray-900 mb-1">Carol Kalevor</h6>
+                            <p class="text-blue-600 font-medium mb-3">Health and Safety Director</p>
+                            <p class="text-gray-600 text-sm">Certified safety professional ensuring workplace health standards and emergency preparedness. Oversees safety protocols and risk mitigation strategies.</p>
+                        </div>
+                        
+                        <div class="bg-white p-6 rounded-xl shadow-lg border text-center">
+                            <div class="mb-4">
+                                <img src="./Ernest.png" 
+                                     alt="Ernest Adu - Operations Director" 
+                                     class="w-24 h-24 rounded-full mx-auto object-cover border-4 border-purple-200"
+                                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                <div class="w-24 h-24 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full mx-auto flex items-center justify-center text-3xl text-white font-bold" style="display: none;">
+                                    EA
+                                </div>
+                            </div>
+                            <h6 class="text-lg font-semibold text-gray-900 mb-1">Ernest Adu</h6>
+                            <p class="text-blue-600 font-medium mb-3">Operations Director</p>
+                            <p class="text-gray-600 text-sm">Expert in security operations with extensive background in risk management and operational excellence across multiple industries.</p>
+                        </div>
+                        
+                        <div class="bg-white p-6 rounded-xl shadow-lg border text-center">
+                            <div class="mb-4">
+                                <div class="w-24 h-24 bg-gradient-to-br from-green-500 to-green-600 rounded-full mx-auto flex items-center justify-center text-3xl text-white font-bold">
+                                    JS
+                                </div>
+                            </div>
+                            <h6 class="text-lg font-semibold text-gray-900 mb-1">Jibreel Shamsudeen</h6>
+                            <p class="text-blue-600 font-medium mb-3">Technology Director</p>
+                            <p class="text-gray-600 text-sm">Leading our technological innovations in security systems and surveillance. Specialist in advanced security technology integration.</p>
+                        </div>
+                        
+                        <div class="bg-white p-6 rounded-xl shadow-lg border text-center">
+                            <div class="mb-4">
+                                <img src="./Evelyn.jpeg" 
+                                     alt="Evelyn Awash - Secretary" 
+                                     class="w-24 h-24 rounded-full mx-auto object-cover border-4 border-pink-200"
+                                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                <div class="w-24 h-24 bg-gradient-to-br from-pink-500 to-pink-600 rounded-full mx-auto flex items-center justify-center text-3xl text-white font-bold" style="display: none;">
+                                    EA
+                                </div>
+                            </div>
+                            <h6 class="text-lg font-semibold text-gray-900 mb-1">Evelyn Awash</h6>
+                            <p class="text-blue-600 font-medium mb-3">Secretary</p>
+                            <p class="text-gray-600 text-sm">Experienced administrative professional managing corporate governance and board communications. Ensures efficient operations and regulatory compliance.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contact CTA -->
+                <div class="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-6 rounded-xl text-center">
+                    <h5 class="text-xl font-bold mb-2">Ready to Secure Your Future?</h5>
+                    <p class="mb-4">Contact us today for a free security consultation and customized protection plan.</p>
+                    <div class="space-x-4">
+                        <button onclick="openContactModal(); closeAboutModal();" class="bg-white text-blue-600 hover:bg-gray-100 px-6 py-2 rounded-lg font-semibold transition duration-300">Get Quote</button>
+                        <button onclick="closeAboutModal()" class="border-2 border-white text-white hover:bg-white hover:text-blue-600 px-6 py-2 rounded-lg font-semibold transition duration-300">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Modal -->
+    <div id="contact-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4" style="display: none;">
+        <div class="bg-white rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-2xl font-bold text-gray-900">Request a Quote</h3>
+                    <button onclick="closeContactModal()" class="text-gray-400 hover:text-gray-600 text-2xl font-bold">×</button>
+                </div>
+                
+                <div class="bg-green-50 border border-green-200 rounded-lg p-4 mb-6">
+                    <p class="text-green-800 text-sm"><strong>Secure Contact Form:</strong> Your inquiry will be sent directly to info@sagittariussecurity.org. We'll respond within 24 hours.</p>
+                </div>
+                
+                <!-- Contact Form -->
+                <form id="modal-contact-form" 
+                      class="space-y-4">
+                    
+                    <!-- Form will be processed via JavaScript for better user experience -->
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Full Name *</label>
+                            <input type="text" 
+                                   name="name" 
+                                   required 
+                                   maxlength="255" 
+                                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" 
+                                   placeholder="Your full name">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Email *</label>
+                            <input type="email" 
+                                   name="email" 
+                                   required 
+                                   maxlength="255" 
+                                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" 
+                                   placeholder="your@email.com">
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Phone</label>
+                            <input type="tel" 
+                                   name="phone" 
+                                   maxlength="20" 
+                                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" 
+                                   placeholder="+233 55 715 0062">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Service Needed *</label>
+                            <select name="service" 
+                                    required 
+                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                <option value="">Select a service</option>
+                                <option value="Personal Protection">Personal Protection</option>
+                                <option value="Corporate Security">Corporate Security</option>
+                                <option value="Surveillance Systems">Surveillance Systems</option>
+                                <option value="Alarm Systems">Alarm Systems</option>
+                                <option value="Residential Security">Residential Security</option>
+                                <option value="CCTV Camera Installation">CCTV Camera Installation</option>
+                                <option value="Risk Assessment">Risk Assessment</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Company/Organization</label>
+                        <input type="text" 
+                               name="company" 
+                               maxlength="255" 
+                               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" 
+                               placeholder="Your company name (optional)">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Message *</label>
+                        <textarea name="message" 
+                                  rows="3" 
+                                  required 
+                                  maxlength="65535" 
+                                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" 
+                                  placeholder="Tell us about your security needs..."></textarea>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <!-- Preferred Contact Method -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Preferred Contact Method</label>
+                            <div class="space-y-2">
+                                <label class="flex items-center">
+                                    <input type="radio" name="contact_method" value="Email" class="mr-2 text-blue-600">
+                                    <span class="text-gray-700">Email</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="radio" name="contact_method" value="Phone" class="mr-2 text-blue-600">
+                                    <span class="text-gray-700">Phone</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="radio" name="contact_method" value="WhatsApp" class="mr-2 text-blue-600">
+                                    <span class="text-gray-700">WhatsApp</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <!-- Urgency Level -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Urgency Level</label>
+                            <select name="urgency" 
+                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                <option value="">Select urgency level</option>
+                                <option value="Low - General Inquiry">Low - General Inquiry</option>
+                                <option value="Medium - Quote Needed">Medium - Quote Needed</option>
+                                <option value="High - Urgent Security Need">High - Urgent Security Need</option>
+                                <option value="Emergency - Immediate Response">Emergency - Immediate Response</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <!-- Privacy Consent -->
+                    <div class="flex items-start">
+                        <input type="checkbox" 
+                               name="privacy_consent" 
+                               value="I agree to the privacy policy" 
+                               required 
+                               class="mt-1 mr-3 text-blue-600">
+                        <label class="text-sm text-gray-700">
+                            I agree to the <a href="#" class="text-blue-600 hover:text-blue-800">privacy policy</a> and consent to Sagittarius Security contacting me about my inquiry. *
+                        </label>
+                    </div>
+                    
+                    <!-- Form Status Messages -->
+                    <div id="modal-form-status" class="hidden p-4 rounded-lg"></div>
+                    
+                    <div class="flex gap-4 pt-4">
+                        <button type="button" 
+                                onclick="closeContactModal()" 
+                                class="flex-1 bg-gray-300 hover:bg-gray-400 text-gray-700 py-3 px-6 rounded-lg font-semibold transition duration-300">
+                            Cancel
+                        </button>
+                        <button type="submit" 
+                                id="modal-submit-btn" 
+                                class="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-3 px-6 rounded-lg font-semibold transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed">
+                            Send Message
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- WhatsApp Chat Widget -->
+    <div id="whatsapp-widget" class="fixed bottom-6 right-6 z-40">
+        <button onclick="sendWhatsAppMessage('Hello, I need security services information')" class="bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg transition-all duration-300 transform hover:scale-110">
+            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+            </svg>
+        </button>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Services Modal Functions
+        function openServicesModal() {
+            document.getElementById('services-modal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeServicesModal() {
+            document.getElementById('services-modal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // About Modal Functions
+        function openAboutModal() {
+            document.getElementById('about-modal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeAboutModal() {
+            document.getElementById('about-modal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Contact Modal Functions
+        function openContactModal() {
+            document.getElementById('contact-modal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeContactModal() {
+            document.getElementById('contact-modal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+
+
+        // WhatsApp function
+        function sendWhatsAppMessage(message) {
+            const phoneNumber = '233557150062'; // Ghana number format
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+            window.open(whatsappURL, '_blank');
+        }
+
+        // Contact form handling
+        function handleContactForm(formId, statusId, submitBtnId) {
+            const form = document.getElementById(formId);
+            const statusDiv = document.getElementById(statusId);
+            const submitBtn = document.getElementById(submitBtnId);
+            
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Show loading state
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Sending...';
+                statusDiv.className = 'p-4 rounded-lg bg-blue-50 border border-blue-200';
+                statusDiv.innerHTML = '<p class="text-blue-800">📤 Sending your message...</p>';
+                statusDiv.classList.remove('hidden');
+                
+                // Simulate form processing
+                setTimeout(() => {
+                    // Show success message
+                    statusDiv.className = 'p-4 rounded-lg bg-green-50 border border-green-200';
+                    statusDiv.innerHTML = `
+                        <div class="text-green-800">
+                            <p class="font-semibold mb-2">✅ Message Sent Successfully!</p>
+                            <p class="text-sm">Thank you for contacting Sagittarius Security. We'll respond within 24 hours.</p>
+                            <p class="text-sm mt-2"><strong>For urgent matters:</strong> Call +233 55 715 0062</p>
+                        </div>
+                    `;
+                    
+                    // Reset form
+                    form.reset();
+                    
+                    // Reset button
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Send Message';
+                    
+                    // Auto-hide success message after 5 seconds
+                    setTimeout(() => {
+                        statusDiv.classList.add('hidden');
+                    }, 5000);
+                    
+                }, 2000);
+            });
+        }
+
+        // Live time display function
+        function updateTime() {
+            const now = new Date();
+            const options = {
+                timeZone: 'Africa/Accra',
+                hour12: true,
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            };
+            const timeString = now.toLocaleTimeString('en-US', options);
+            const timeElement = document.getElementById('current-time');
+            if (timeElement) {
+                timeElement.textContent = `${timeString} Ghana Time GMT`;
+            }
+        }
+
+        // Initialize contact forms and time display
+        document.addEventListener('DOMContentLoaded', function() {
+            // Main contact form
+            if (document.getElementById('contact-form')) {
+                handleContactForm('contact-form', 'form-status', 'submit-btn');
+            }
+            
+            // Modal contact form
+            if (document.getElementById('modal-contact-form')) {
+                handleContactForm('modal-contact-form', 'modal-form-status', 'modal-submit-btn');
+            }
+            
+            // Initialize time display
+            updateTime();
+            setInterval(updateTime, 1000); // Update every second
+        });
+
+        // Close modals when clicking outside
+        window.addEventListener('click', function(e) {
+            const servicesModal = document.getElementById('services-modal');
+            const aboutModal = document.getElementById('about-modal');
+            const contactModal = document.getElementById('contact-modal');
+            
+            if (e.target === servicesModal) {
+                closeServicesModal();
+            }
+            if (e.target === aboutModal) {
+                closeAboutModal();
+            }
+            if (e.target === contactModal) {
+                closeContactModal();
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98015b0237ee932a',t:'MTc1ODAzNjEwNy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
